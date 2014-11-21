@@ -1,0 +1,17 @@
+php oil generate scaffold item itemname:string itemtype:int itemabbr:string
+php oil generate scaffold draw qishu:int luckynum:int begin_at:datetime lucky_at:datetime open_at:datetime itemid:int
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
