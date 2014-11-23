@@ -18,13 +18,15 @@ class Controller_Draw extends Controller_Template{
 		$default = stream_context_set_default($default_opts);
 		
 	
-		Twig_Autoloader::register();		
+			
 		
-		$query = DB::query('SELECT * FROM items')->as_object()->execute();
+		//$query = DB::query('SELECT * FROM items')->as_object()->execute();
 		//print_r($query);
 		//print_r(Model_Item::insertData("15"));
 		print_r(Model_Item::getInfoFromUrl("http://1.163.com/detail/01-37-00-04-20.html"));
 		print_r(Model_Item::getItemidFromForurl(15));
+		echo "<br />";
+		$this->getDataFromOnepage();
 		//$this->getDataFromWeb();
 /* 		$qishu=1;
 		$luckynum=1;
@@ -195,7 +197,7 @@ class Controller_Draw extends Controller_Template{
 
 	}
 /////////
-   public function getDataFromWeb($url=null)
+   public function getDataFromOnepage($url=null)
    {
 
    	$content = file_get_contents('http://1.163.com/detail/01-37-00-04-20.html');   	
@@ -203,7 +205,10 @@ class Controller_Draw extends Controller_Template{
    	$obj->set($content);   	
    	$t = $obj->get('shijian', 1);
    	$diji = $obj->get('dijiqi', 0);
-   	$zhong = $obj->get('luckynum', 0);
+   	$pattern='/\d{1,}/';
+   	preg_match($pattern,$diji[0], $matches);
+   	$diji=$matches[0];
+   	$zhong = $obj->get('luckynum', 0)[0];
    	//$t = $obj->get('shijian', 1);
    	//print_r($url);
    	echo "<br />";
