@@ -41,25 +41,21 @@
  * @link       http://www.phpunit.de/
  * @since      File available since Release 2.0.0
  */
-
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MockRunner.php';
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'NonStatic.php';
+require_once dirname ( __DIR__ ) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MockRunner.php';
+require_once dirname ( __DIR__ ) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'NonStatic.php';
 
 /**
  *
- *
- * @package    PHPUnit
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.0.0
+ * @package PHPUnit
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.0.0
  */
-class Runner_BaseTestRunnerTest extends PHPUnit_Framework_TestCase
-{
-    public function testInvokeNonStaticSuite()
-    {
-        $runner = new MockRunner;
-        $runner->getTest('NonStatic');
-    }
+class Runner_BaseTestRunnerTest extends PHPUnit_Framework_TestCase {
+	public function testInvokeNonStaticSuite() {
+		$runner = new MockRunner ();
+		$runner->getTest ( 'NonStatic' );
+	}
 }

@@ -1,5 +1,4 @@
 <?php
-
-return array(
-	'name'			=> 'Group name',
+return array (
+		'name' => 'Group name' 
 );

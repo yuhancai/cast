@@ -41,119 +41,274 @@
  * @link       http://www.phpunit.de/
  * @since      File available since Release 3.6.0
  */
-
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'ClassWithToString.php';
-
-class TestClass {}
-class TestClassComparator extends PHPUnit_Framework_Comparator_Object {}
+require_once dirname ( __DIR__ ) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'ClassWithToString.php';
+class TestClass {
+}
+class TestClassComparator extends PHPUnit_Framework_Comparator_Object {
+}
 
 /**
  *
- *
- * @package    PHPUnit
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.0
+ * @package PHPUnit
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.0
  */
-class Framework_ComparatorTest extends PHPUnit_Framework_TestCase
-{
-    // Don't use other test methods than ->fail() here, because the testers tested
-    // here are the foundation for the other test methods
-
-    public function instanceProvider()
-    {
-        $tmpfile = tmpfile();
-
-        return array(
-            array(NULL, NULL, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(NULL, TRUE, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(TRUE, NULL, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(TRUE, TRUE, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(FALSE, FALSE, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(TRUE, FALSE, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(FALSE, TRUE, 'PHPUnit_Framework_Comparator_Scalar'),
-            array('', '', 'PHPUnit_Framework_Comparator_Scalar'),
-            array('0', '0', 'PHPUnit_Framework_Comparator_Numeric'),
-            array('0', 0, 'PHPUnit_Framework_Comparator_Numeric'),
-            array(0, '0', 'PHPUnit_Framework_Comparator_Numeric'),
-            array(0, 0, 'PHPUnit_Framework_Comparator_Numeric'),
-            array(1.0, 0, 'PHPUnit_Framework_Comparator_Double'),
-            array(0, 1.0, 'PHPUnit_Framework_Comparator_Double'),
-            array(1.0, 1.0, 'PHPUnit_Framework_Comparator_Double'),
-            array(array(1), array(1), 'PHPUnit_Framework_Comparator_Array'),
-            array($tmpfile, $tmpfile, 'PHPUnit_Framework_Comparator_Resource'),
-            array(new stdClass, new stdClass, 'PHPUnit_Framework_Comparator_Object'),
-            array(new SplObjectStorage, new SplObjectStorage, 'PHPUnit_Framework_Comparator_SplObjectStorage'),
-            array(new Exception, new Exception, 'PHPUnit_Framework_Comparator_Exception'),
-            array(new DOMDocument, new DOMDocument, 'PHPUnit_Framework_Comparator_DOMDocument'),
-            // mixed types
-            array($tmpfile, array(1), 'PHPUnit_Framework_Comparator_Type'),
-            array(array(1), $tmpfile, 'PHPUnit_Framework_Comparator_Type'),
-            array($tmpfile, '1', 'PHPUnit_Framework_Comparator_Type'),
-            array('1', $tmpfile, 'PHPUnit_Framework_Comparator_Type'),
-            array($tmpfile, new stdClass, 'PHPUnit_Framework_Comparator_Type'),
-            array(new stdClass, $tmpfile, 'PHPUnit_Framework_Comparator_Type'),
-            array(new stdClass, array(1), 'PHPUnit_Framework_Comparator_Type'),
-            array(array(1), new stdClass, 'PHPUnit_Framework_Comparator_Type'),
-            array(new stdClass, '1', 'PHPUnit_Framework_Comparator_Type'),
-            array('1', new stdClass, 'PHPUnit_Framework_Comparator_Type'),
-            array(new ClassWithToString, '1', 'PHPUnit_Framework_Comparator_Scalar'),
-            array('1', new ClassWithToString, 'PHPUnit_Framework_Comparator_Scalar'),
-            array(1.0, new stdClass, 'PHPUnit_Framework_Comparator_Type'),
-            array(new stdClass, 1.0, 'PHPUnit_Framework_Comparator_Type'),
-            array(1.0, array(1), 'PHPUnit_Framework_Comparator_Type'),
-            array(array(1), 1.0, 'PHPUnit_Framework_Comparator_Type'),
-        );
-    }
-
-    /**
-     * @dataProvider instanceProvider
-     */
-    public function testGetInstance($a, $b, $expected)
-    {
-        $factory = new PHPUnit_Framework_ComparatorFactory;
-
-        if (get_class($factory->getComparatorFor($a, $b)) != $expected) {
-            $this->fail();
-        }
-    }
-
-    public function testRegister()
-    {
-        $comparator = new TestClassComparator;
-
-        $factory = new PHPUnit_Framework_ComparatorFactory;
-        $factory->register($comparator);
-
-        $a = new TestClass;
-        $b = new TestClass;
-        $expected = 'TestClassComparator';
-
-        if (get_class($factory->getComparatorFor($a, $b)) != $expected) {
-            $factory->unregister($comparator);
-            $this->fail();
-        }
-
-        $factory->unregister($comparator);
-    }
-
-    public function testUnregister()
-    {
-        $comparator = new TestClassComparator;
-
-        $factory = new PHPUnit_Framework_ComparatorFactory;
-        $factory->register($comparator);
-        $factory->unregister($comparator);
-
-        $a = new TestClass;
-        $b = new TestClass;
-        $expected = 'PHPUnit_Framework_Comparator_Object';
-
-        if (get_class($factory->getComparatorFor($a, $b)) != $expected) {
-            var_dump(get_class($factory->getComparatorFor($a, $b)));
-            $this->fail();
-        }
-    }
+class Framework_ComparatorTest extends PHPUnit_Framework_TestCase {
+	// Don't use other test methods than ->fail() here, because the testers tested
+	// here are the foundation for the other test methods
+	public function instanceProvider() {
+		$tmpfile = tmpfile ();
+		
+		return array (
+				array (
+						NULL,
+						NULL,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						NULL,
+						TRUE,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						TRUE,
+						NULL,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						TRUE,
+						TRUE,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						FALSE,
+						FALSE,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						TRUE,
+						FALSE,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						FALSE,
+						TRUE,
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						'',
+						'',
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						'0',
+						'0',
+						'PHPUnit_Framework_Comparator_Numeric' 
+				),
+				array (
+						'0',
+						0,
+						'PHPUnit_Framework_Comparator_Numeric' 
+				),
+				array (
+						0,
+						'0',
+						'PHPUnit_Framework_Comparator_Numeric' 
+				),
+				array (
+						0,
+						0,
+						'PHPUnit_Framework_Comparator_Numeric' 
+				),
+				array (
+						1.0,
+						0,
+						'PHPUnit_Framework_Comparator_Double' 
+				),
+				array (
+						0,
+						1.0,
+						'PHPUnit_Framework_Comparator_Double' 
+				),
+				array (
+						1.0,
+						1.0,
+						'PHPUnit_Framework_Comparator_Double' 
+				),
+				array (
+						array (
+								1 
+						),
+						array (
+								1 
+						),
+						'PHPUnit_Framework_Comparator_Array' 
+				),
+				array (
+						$tmpfile,
+						$tmpfile,
+						'PHPUnit_Framework_Comparator_Resource' 
+				),
+				array (
+						new stdClass (),
+						new stdClass (),
+						'PHPUnit_Framework_Comparator_Object' 
+				),
+				array (
+						new SplObjectStorage (),
+						new SplObjectStorage (),
+						'PHPUnit_Framework_Comparator_SplObjectStorage' 
+				),
+				array (
+						new Exception (),
+						new Exception (),
+						'PHPUnit_Framework_Comparator_Exception' 
+				),
+				array (
+						new DOMDocument (),
+						new DOMDocument (),
+						'PHPUnit_Framework_Comparator_DOMDocument' 
+				),
+				// mixed types
+				array (
+						$tmpfile,
+						array (
+								1 
+						),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						array (
+								1 
+						),
+						$tmpfile,
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						$tmpfile,
+						'1',
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						'1',
+						$tmpfile,
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						$tmpfile,
+						new stdClass (),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						new stdClass (),
+						$tmpfile,
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						new stdClass (),
+						array (
+								1 
+						),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						array (
+								1 
+						),
+						new stdClass (),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						new stdClass (),
+						'1',
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						'1',
+						new stdClass (),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						new ClassWithToString (),
+						'1',
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						'1',
+						new ClassWithToString (),
+						'PHPUnit_Framework_Comparator_Scalar' 
+				),
+				array (
+						1.0,
+						new stdClass (),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						new stdClass (),
+						1.0,
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						1.0,
+						array (
+								1 
+						),
+						'PHPUnit_Framework_Comparator_Type' 
+				),
+				array (
+						array (
+								1 
+						),
+						1.0,
+						'PHPUnit_Framework_Comparator_Type' 
+				) 
+		);
+	}
+	
+	/**
+	 * @dataProvider instanceProvider
+	 */
+	public function testGetInstance($a, $b, $expected) {
+		$factory = new PHPUnit_Framework_ComparatorFactory ();
+		
+		if (get_class ( $factory->getComparatorFor ( $a, $b ) ) != $expected) {
+			$this->fail ();
+		}
+	}
+	public function testRegister() {
+		$comparator = new TestClassComparator ();
+		
+		$factory = new PHPUnit_Framework_ComparatorFactory ();
+		$factory->register ( $comparator );
+		
+		$a = new TestClass ();
+		$b = new TestClass ();
+		$expected = 'TestClassComparator';
+		
+		if (get_class ( $factory->getComparatorFor ( $a, $b ) ) != $expected) {
+			$factory->unregister ( $comparator );
+			$this->fail ();
+		}
+		
+		$factory->unregister ( $comparator );
+	}
+	public function testUnregister() {
+		$comparator = new TestClassComparator ();
+		
+		$factory = new PHPUnit_Framework_ComparatorFactory ();
+		$factory->register ( $comparator );
+		$factory->unregister ( $comparator );
+		
+		$a = new TestClass ();
+		$b = new TestClass ();
+		$expected = 'PHPUnit_Framework_Comparator_Object';
+		
+		if (get_class ( $factory->getComparatorFor ( $a, $b ) ) != $expected) {
+			var_dump ( get_class ( $factory->getComparatorFor ( $a, $b ) ) );
+			$this->fail ();
+		}
+	}
 }

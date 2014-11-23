@@ -44,42 +44,42 @@
 /**
  * A caching factory for token stream objects.
  *
- * @author    Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
  * @copyright 2009-2013 Sebastian Bergmann <sebastian@phpunit.de>
- * @license   http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @version   Release: @package_version@
- * @link      http://github.com/sebastianbergmann/php-token-stream/tree
- * @since     Class available since Release 1.0.0
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @version Release: @package_version@
+ * @link http://github.com/sebastianbergmann/php-token-stream/tree
+ * @since Class available since Release 1.0.0
  */
-class PHP_Token_Stream_CachingFactory
-{
-    /**
-     * @var array
-     */
-    protected static $cache = array();
-
-    /**
-     * @param  string $filename
-     * @return PHP_Token_Stream
-     */
-    public static function get($filename)
-    {
-        if (!isset(self::$cache[$filename])) {
-            self::$cache[$filename] = new PHP_Token_Stream($filename);
-        }
-
-        return self::$cache[$filename];
-    }
-
-    /**
-     * @param string $filename
-     */
-    public static function clear($filename = NULL)
-    {
-        if (is_string($filename)) {
-            unset(self::$cache[$filename]);
-        } else {
-            self::$cache = array();
-        }
-    }
+class PHP_Token_Stream_CachingFactory {
+	/**
+	 *
+	 * @var array
+	 */
+	protected static $cache = array ();
+	
+	/**
+	 *
+	 * @param string $filename        	
+	 * @return PHP_Token_Stream
+	 */
+	public static function get($filename) {
+		if (! isset ( self::$cache [$filename] )) {
+			self::$cache [$filename] = new PHP_Token_Stream ( $filename );
+		}
+		
+		return self::$cache [$filename];
+	}
+	
+	/**
+	 *
+	 * @param string $filename        	
+	 */
+	public static function clear($filename = NULL) {
+		if (is_string ( $filename )) {
+			unset ( self::$cache [$filename] );
+		} else {
+			self::$cache = array ();
+		}
+	}
 }

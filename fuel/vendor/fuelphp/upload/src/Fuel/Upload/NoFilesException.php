@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package    Fuel\Upload
  * @version    2.0
@@ -7,10 +8,10 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Upload;
 
 /**
  * Exception class to indicate no files where uploaded
  */
-class NoFilesException extends \RuntimeException {}
+class NoFilesException extends \RuntimeException {
+}

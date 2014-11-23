@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 		var class_prefix = 'Query_Builder_Delete::';
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>Query Builder Delete - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>Query Builder Delete - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -51,14 +50,16 @@
 				(extends <a href="qb_where.html">Query_Builder_Where</a>)
 			</p>
 
-			<p>
-				The Query_Builder_Delete class handles all the delete operations for the query building process. It extends the
-				Query_Builder_Where class, so all the methods are inherited.
-			</p>
+			<p>The Query_Builder_Delete class handles all the delete
+				operations for the query building process. It extends the
+				Query_Builder_Where class, so all the methods are inherited.</p>
 
 			<article>
 				<h4 class="method" id="method_table">table($table)</h4>
-				<p>The <strong>table</strong> method sets/changes the table to delete from.</p>
+				<p>
+					The <strong>table</strong> method sets/changes the table to delete
+					from.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -90,16 +91,16 @@
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare a delete statement
+							<td><pre class="php">
+									<code>// prepare a delete statement
 $query = DB::delete('users');
 
 // Set the table to delete from
 $query->table('admins');
 
 // DELETE `admins` ...
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -107,7 +108,10 @@ $query->table('admins');
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p>The <strong>compile</strong> method returns the delete SQL query as a string.</p>
+				<p>
+					The <strong>compile</strong> method returns the delete SQL query as
+					a string.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -139,8 +143,8 @@ $query->table('admins');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare a delete statement
+							<td><pre class="php">
+									<code>// prepare a delete statement
 $query = DB::delete('users');
 
 // Set a where statement
@@ -153,8 +157,8 @@ $connection = Database_Connection::instance();
 $sql = $query->compile($connection);
 
 // DELETE FROM `users` WHERE `looks` LIKE "%spammer%"
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -162,7 +166,10 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_reset">reset()</h4>
-				<p>The <strong>reset</strong> method resets all values of the current instance.</p>
+				<p>
+					The <strong>reset</strong> method resets all values of the current
+					instance.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -171,9 +178,7 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Parameters</th>
-							<td>
-								<em>None</em>
-							</td>
+							<td><em>None</em></td>
 						</tr>
 						<tr>
 							<th>Returns</th>
@@ -181,8 +186,8 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare a delete statement
+							<td><pre class="php">
+									<code>// prepare a delete statement
 $query = DB:delete('users');
 
 // Set a where statement
@@ -201,8 +206,8 @@ $connection = Database_Connection::instance();
 $sql = $query->compile($connection);
 
 // DELETE FROM `users` WHERE `looks` LIKE "%bad mister%"
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -212,7 +217,9 @@ $sql = $query->compile($connection);
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

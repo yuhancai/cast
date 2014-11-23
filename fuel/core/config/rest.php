@@ -18,8 +18,6 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-
-
 return array(
 
 	/*
@@ -63,7 +61,9 @@ return array(
 	|	array('admin' => '1234')
 	|
 	*/
-	'valid_logins' => array('admin' => '1234'),
+	'valid_logins' => array (
+				'admin' => '1234' 
+		),
 
 	/*
 	| Ignore HTTP_ACCEPT
@@ -72,8 +72,8 @@ return array(
 	| disabling this will speed up your requests if you do not use a ACCEPT header.
 	|
 	*/
-	'ignore_http_accept' => false,
-
-);
+	'ignore_http_accept' => false 
+)
+;
 
 

@@ -46,21 +46,20 @@
 /**
  * A Test can be run and collect its results.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Interface available since Release 2.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Interface available since Release 2.0.0
  */
-interface PHPUnit_Framework_Test extends Countable
-{
-    /**
-     * Runs a test and collects its result in a TestResult instance.
-     *
-     * @param  PHPUnit_Framework_TestResult $result
-     * @return PHPUnit_Framework_TestResult
-     */
-    public function run(PHPUnit_Framework_TestResult $result = NULL);
+interface PHPUnit_Framework_Test extends Countable {
+	/**
+	 * Runs a test and collects its result in a TestResult instance.
+	 *
+	 * @param PHPUnit_Framework_TestResult $result        	
+	 * @return PHPUnit_Framework_TestResult
+	 */
+	public function run(PHPUnit_Framework_TestResult $result = NULL);
 }

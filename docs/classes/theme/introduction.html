@@ -1,31 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>Theme Introduction - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>Theme Introduction - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -47,104 +46,115 @@
 			<h2>Theme class</h2>
 
 			<h3 id="intro">Introduction</h3>
-			<p>
-				The Theme class provides theming to your application.
-			</p>
-			<p>
-				A theme will group theme templates (views) and assets, and allows you to change the look and feel of your application by
-				switching the active theme.
-			</p>
-			<p>
-				Like modules and packages, themes can be stored in multiple locations. You can define the paths to these locations in the
-				configuration file,	or add them to the theme instance at runtime. A theme is identified by its name, which must be equal
-				to the name of the theme folder	used in one of the theme locations. If the theme is defined in multiple locations,
-				the first one found will be used.
-			</p>
+			<p>The Theme class provides theming to your application.</p>
+			<p>A theme will group theme templates (views) and assets, and
+				allows you to change the look and feel of your application by
+				switching the active theme.</p>
+			<p>Like modules and packages, themes can be stored in multiple
+				locations. You can define the paths to these locations in the
+				configuration file, or add them to the theme instance at runtime. A
+				theme is identified by its name, which must be equal to the name of
+				the theme folder used in one of the theme locations. If the theme is
+				defined in multiple locations, the first one found will be used.</p>
 
 			<h3 id="info">Theme information</h3>
 
-			<p>
-				You can provide setup information for your theme through the theme information file.
-				This file has a fixed name for all your themes, which can be configured through the global configuration file. It also has an
-				option to make this file required.
-			</p>
-			<p>
-				The format of an information file follows the same rules as normal configuration files, and supports the same file types.
-				An information file can contain a special section called 'options'. Options can be get or set from your code, and can be used
-				to control certain characteristics of your theme, for example a color used, or a custom css filename to select a color scheme.
-			</p>
-			<p class="note">At this moment, information files are read-only. You can alter the options at runtime, but you can not write them back.</p>
+			<p>You can provide setup information for your theme through the
+				theme information file. This file has a fixed name for all your
+				themes, which can be configured through the global configuration
+				file. It also has an option to make this file required.</p>
+			<p>The format of an information file follows the same rules as
+				normal configuration files, and supports the same file types. An
+				information file can contain a special section called 'options'.
+				Options can be get or set from your code, and can be used to control
+				certain characteristics of your theme, for example a color used, or
+				a custom css filename to select a color scheme.</p>
+			<p class="note">At this moment, information files are read-only.
+				You can alter the options at runtime, but you can not write them
+				back.</p>
 
 			<h3 id="assets">Theme assets</h3>
 
 			<p>
-				You theme is likely to have assets (images, javascript or css files). Assets have to be installed inside the <strong>DOCROOT</strong>
-				so that the browser can load them. You can elect to install the assets inside the theme directory, which implies this has to be inside
-				the <strong>DOCROOT</strong>, or have the theme files outside the <strong>DOCROOT</strong>, and the theme assets in a separate folder
-				inside the <strong>DOCROOT</strong>. Alternatively, you can specify a base URL for your assets, for example if you use a CDN.
+				You theme is likely to have assets (images, javascript or css
+				files). Assets have to be installed inside the <strong>DOCROOT</strong>
+				so that the browser can load them. You can elect to install the
+				assets inside the theme directory, which implies this has to be
+				inside the <strong>DOCROOT</strong>, or have the theme files outside
+				the <strong>DOCROOT</strong>, and the theme assets in a separate
+				folder inside the <strong>DOCROOT</strong>. Alternatively, you can
+				specify a base URL for your assets, for example if you use a CDN.
 			</p>
-			<p>
-				The following logic is used to determine the location of the theme asset files:
-				<ul>
-					<li>
-						If your asset folder is a URL, it is suffixed by the theme name, and used as the base URL for your assets.
-					</li>
-					<li>
-						If the theme folder is <u>inside</u> the <strong>DOCROOT</strong>, and it contains a folder with the name of the configured
-						<strong>assets_folder</strong>, this will be the URL for all your theme assets.
-					</li>
-					<li>
-						If the theme folder is <u>inside</u> the <strong>DOCROOT</strong>, and it does NOT contains a folder with the name of the configured
-						<strong>assets_folder</strong>, the <strong>assets_folder</strong> will be assumed to be the root of all your theme assets,
-						to which the name of the theme will be appended.
-					</li>
-					<li>
-						If the theme folder is <u>outside</u> the <strong>DOCROOT</strong>, the <strong>assets_folder</strong> will be assumed to be the
-						root of all your theme assets, to which the name of the theme will be appended.
-					</li>
-				</ul>
+			<p>The following logic is used to determine the location of the
+				theme asset files:
+			<ul>
+				<li>If your asset folder is a URL, it is suffixed by the theme
+					name, and used as the base URL for your assets.</li>
+				<li>If the theme folder is <u>inside</u> the <strong>DOCROOT</strong>,
+					and it contains a folder with the name of the configured <strong>assets_folder</strong>,
+					this will be the URL for all your theme assets.
+				</li>
+				<li>If the theme folder is <u>inside</u> the <strong>DOCROOT</strong>,
+					and it does NOT contains a folder with the name of the configured <strong>assets_folder</strong>,
+					the <strong>assets_folder</strong> will be assumed to be the root
+					of all your theme assets, to which the name of the theme will be
+					appended.
+				</li>
+				<li>If the theme folder is <u>outside</u> the <strong>DOCROOT</strong>,
+					the <strong>assets_folder</strong> will be assumed to be the root
+					of all your theme assets, to which the name of the theme will be
+					appended.
+				</li>
+			</ul>
 
-				<p class="note">
-					If you want to use the built-in Asset class support, your asset folder must have a compatible folder structure, with /css, /img and /js subfolders.
-				</p>
+			<p class="note">If you want to use the built-in Asset class
+				support, your asset folder must have a compatible folder structure,
+				with /css, /img and /js subfolders.</p>
 			</p>
 
 			<h3 id="layouts">Theme templates or layouts</h3>
 
-			<p>
-				The Theme works with theme templates or layouts, which are view files that define the layout of your page.
-			</p>
+			<p>The Theme works with theme templates or layouts, which are
+				view files that define the layout of your page.</p>
 
 			<h3 id="partials">Theme template partials</h3>
 
+			<p>The variable sections of the template can be defined using
+				template partials, which are separate views build to provide a
+				section of the page. In larger application designs, partials are
+				often generated by separate code, accessed via HMVC calls.</p>
 			<p>
-				The variable sections of the template can be defined using template partials, which are separate views build to provide a
-				section of the page. In larger application designs, partials are often generated by separate code, accessed via HMVC calls.
-			</p>
-			<p>
-				The contents of a partials section can be accessed through a view variable $partials, an array with an entry for each of the partial
-				sections defined. You access a section using it's name. So for a partial section called 'sidebar', you would use <strong>echo $partials['sidebar'];</strong> in your page template.
+				The contents of a partials section can be accessed through a view
+				variable $partials, an array with an entry for each of the partial
+				sections defined. You access a section using it's name. So for a
+				partial section called 'sidebar', you would use <strong>echo
+					$partials['sidebar'];</strong> in your page template.
 			</p>
 
 			<h3 id="chrome">Partial chrome</h3>
 
-			<p>
-				'Chrome' is a term used in UI interface design, and describes the design and styling of a window border. In the context of the Theme
-				class, it is a view that can be used to encapsulate a template partial section, which allows you to style that section independent
-				of the template itself and of the partial output. Chrome will only be generated if there are partials to render. A chrome template
-				will encapsulate a partial section, which may contain multiple partials.
+			<p>'Chrome' is a term used in UI interface design, and describes
+				the design and styling of a window border. In the context of the
+				Theme class, it is a view that can be used to encapsulate a template
+				partial section, which allows you to style that section independent
+				of the template itself and of the partial output. Chrome will only
+				be generated if there are partials to render. A chrome template will
+				encapsulate a partial section, which may contain multiple partials.
 			</p>
-			<p>
-				For example, if you have a UI with windows, some of which can be opened and closed, some of which can be moved, and some are static,
-				you can use different chrome templates assigned to each of the template sections representing such a window. Each chrome template
-				contains the HTML and javascript code to achieve the desired functionality. From your application code, you can control the window
-				behaviour by simply assigning the correct chrome template. This can be particularly useful in CMS type applications, where the user
-				can control the behaviour of the UI.
-			</p>
+			<p>For example, if you have a UI with windows, some of which can
+				be opened and closed, some of which can be moved, and some are
+				static, you can use different chrome templates assigned to each of
+				the template sections representing such a window. Each chrome
+				template contains the HTML and javascript code to achieve the
+				desired functionality. From your application code, you can control
+				the window behaviour by simply assigning the correct chrome
+				template. This can be particularly useful in CMS type applications,
+				where the user can control the behaviour of the UI.</p>
 
 			<p>Example:</p>
 
-			<pre class="php"><code>&lt;?php
+			<pre class="php">
+				<code>&lt;?php
 class Homepage extends \Controller
 {
 	/**
@@ -208,14 +218,17 @@ class Homepage extends \Controller
 		return parent::after($response);
 	}
 }
-	</code></pre>
+	</code>
+			</pre>
 
 			<h3 id="config">Configuration</h3>
 
 			<p>
-				The Theme class is configured through the <strong>app/config/theme.php</strong> configuration file.
-				A configuration file with the defaults mentioned below is already present in fuel/core/config.
-				You can override this configuration by copying this config file to your application config directory, and modify that file as needed.
+				The Theme class is configured through the <strong>app/config/theme.php</strong>
+				configuration file. A configuration file with the defaults mentioned
+				below is already present in fuel/core/config. You can override this
+				configuration by copying this config file to your application config
+				directory, and modify that file as needed.
 			</p>
 
 			<table class="config">
@@ -229,67 +242,98 @@ class Homepage extends \Controller
 					<tr>
 						<th>active</th>
 						<td>string</td>
-						<td><pre class="php"><code>'default'</code></pre></td>
-						<td>The active theme to use. You can select one later using the <a href="./methods.html#method_active">active()</a> method.</td>
+						<td><pre class="php">
+								<code>'default'</code>
+							</pre></td>
+						<td>The active theme to use. You can select one later using
+							the <a href="./methods.html#method_active">active()</a> method.
+						</td>
 					</tr>
 					<tr>
 						<th>fallback</th>
 						<td>string</td>
-						<td><pre class="php"><code>'default'</code></pre></td>
-						<td>The fallback theme to use. If a view is not found in the active theme, this theme is used as a fallback. You can select one later using the <a href="./methods.html#method_fallback">fallback()</a> method.</td>
+						<td><pre class="php">
+								<code>'default'</code>
+							</pre></td>
+						<td>The fallback theme to use. If a view is not found in the
+							active theme, this theme is used as a fallback. You can select
+							one later using the <a href="./methods.html#method_fallback">fallback()</a>
+							method.
+						</td>
 					</tr>
 					<tr>
 						<th>paths</th>
 						<td>array</td>
-						<td><pre class="php"><code>array()</code></pre></td>
-						<td>The theme search paths. They are searched in the order given. You can add them later using the <a href="./methods.html#method_add_path">add_path()</a> or <a href="./methods.html#method_add_paths">add_paths()</a> methods.</td>
+						<td><pre class="php">
+								<code>array()</code>
+							</pre></td>
+						<td>The theme search paths. They are searched in the order
+							given. You can add them later using the <a
+							href="./methods.html#method_add_path">add_path()</a> or <a
+							href="./methods.html#method_add_paths">add_paths()</a> methods.
+						</td>
 					</tr>
 					<tr>
 						<th>assets_folder</th>
 						<td>string</td>
-						<td><pre class="php"><code>'assets'</code></pre></td>
-						<td>The folder inside the theme to be used to store assets.  This is relative to the theme's path.</td>
+						<td><pre class="php">
+								<code>'assets'</code>
+							</pre></td>
+						<td>The folder inside the theme to be used to store assets.
+							This is relative to the theme's path.</td>
 					</tr>
 					<tr>
 						<th>view_ext</th>
 						<td>string</td>
-						<td><pre class="php"><code>'.html'</code></pre></td>
+						<td><pre class="php">
+								<code>'.html'</code>
+							</pre></td>
 						<td>The extension for theme view files.</td>
 					</tr>
 					<tr>
 						<th>info_file_name</th>
 						<td>string</td>
-						<td><pre class="php"><code>'theme.info'</code></pre></td>
+						<td><pre class="php">
+								<code>'theme.info'</code>
+							</pre></td>
 						<td>The theme info file name.</td>
 					</tr>
 					<tr>
 						<th>require_info_file</th>
 						<td>boolean</td>
-						<td><pre class="php"><code>false</code></pre></td>
+						<td><pre class="php">
+								<code>false</code>
+							</pre></td>
 						<td>Whether to require a theme info file.</td>
 					</tr>
 					<tr>
 						<th>info_file_type</th>
 						<td>string</td>
-						<td><pre class="php"><code>'php'</code></pre></td>
-						<td>File type of the theme info file.  Possible values: php, ini, json and yaml.</td>
+						<td><pre class="php">
+								<code>'php'</code>
+							</pre></td>
+						<td>File type of the theme info file. Possible values: php,
+							ini, json and yaml.</td>
 					</tr>
 					<tr>
 						<th>use_modules</th>
 						<td>boolean|string</td>
-						<td><pre class="php"><code>false</code></pre></td>
-						<td>
-							Whether to automatically prefix the view filename with the current module name. If it contains a string,
-							it will be used to prefix the theme view path. This allows you to move all module theme views into a
-							separate folder, and avoid collisions between module names and app views...
-						</td>
+						<td><pre class="php">
+								<code>false</code>
+							</pre></td>
+						<td>Whether to automatically prefix the view filename with
+							the current module name. If it contains a string, it will be used
+							to prefix the theme view path. This allows you to move all module
+							theme views into a separate folder, and avoid collisions between
+							module names and app views...</td>
 					</tr>
 				</tbody>
 			</table>
 
 			<p>Example config:</p>
 
-			<pre class="php"><code>// Inside app/config/theme.php
+			<pre class="php">
+				<code>// Inside app/config/theme.php
 
 return array(
 	'active' => 'default',
@@ -304,15 +348,21 @@ return array(
 	'info_file_type' => 'php',
 	'use_modules' => true,
 );
-	</code></pre>
+	</code>
+			</pre>
 
-			<p>Once you have your settings in place you can start <a href="./methods.html">using</a> the Theme class.</p>
+			<p>
+				Once you have your settings in place you can start <a
+					href="./methods.html">using</a> the Theme class.
+			</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

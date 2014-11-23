@@ -40,27 +40,23 @@
  * @license   http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
  * @since     File available since Release 1.3.0
  */
-
-spl_autoload_register(
-  function ($class)
-  {
-      static $classes = NULL;
-      static $path = NULL;
-
-      if ($classes === NULL) {
-          $classes = array(
-            'file_iterator' => '/Iterator.php',
-            'file_iterator_facade' => '/Iterator/Facade.php',
-            'file_iterator_factory' => '/Iterator/Factory.php'
-          );
-
-          $path = dirname(dirname(__FILE__));
-      }
-
-      $cn = strtolower($class);
-
-      if (isset($classes[$cn])) {
-          require $path . $classes[$cn];
-      }
-  }
-);
+spl_autoload_register ( function ($class) {
+	static $classes = NULL;
+	static $path = NULL;
+	
+	if ($classes === NULL) {
+		$classes = array (
+				'file_iterator' => '/Iterator.php',
+				'file_iterator_facade' => '/Iterator/Facade.php',
+				'file_iterator_factory' => '/Iterator/Factory.php' 
+		);
+		
+		$path = dirname ( dirname ( __FILE__ ) );
+	}
+	
+	$cn = strtolower ( $class );
+	
+	if (isset ( $classes [$cn] )) {
+		require $path . $classes [$cn];
+	}
+} );

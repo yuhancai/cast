@@ -46,17 +46,15 @@
 /**
  * Dummy logger for PEAR_RunTest.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Extensions_PhptTestCase
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.1.4
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.1.4
  */
-class PHPUnit_Extensions_PhptTestCase_Logger
-{
-    public function log($level, $msg, $append_crlf = TRUE)
-    {
-    }
+class PHPUnit_Extensions_PhptTestCase_Logger {
+	public function log($level, $msg, $append_crlf = TRUE) {
+	}
 }

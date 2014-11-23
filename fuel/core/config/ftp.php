@@ -18,19 +18,17 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-
-
-return array(
-
-	'default' => array(
-		'hostname'		=>		'localhost',
-		'username'		=>		'',
-		'password'		=>		'',
-		'port'			=>		21,
-		'passive'		=>		true,
-		'ssl_mode'		=>		false,
-		'debug'			=>		false
-	)
+return array (
+		
+		'default' => array (
+				'hostname' => 'localhost',
+				'username' => '',
+				'password' => '',
+				'port' => 21,
+				'passive' => true,
+				'ssl_mode' => false,
+				'debug' => false 
+		) 
 );
 
 

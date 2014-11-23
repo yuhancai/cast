@@ -46,108 +46,96 @@
 /**
  * The standard test suite loader.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Runner
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.0.0
  */
-class PHPUnit_Runner_StandardTestSuiteLoader implements PHPUnit_Runner_TestSuiteLoader
-{
-    /**
-     * @param  string  $suiteClassName
-     * @param  string  $suiteClassFile
-     * @return ReflectionClass
-     * @throws PHPUnit_Framework_Exception
-     */
-    public function load($suiteClassName, $suiteClassFile = '')
-    {
-        $suiteClassName = str_replace('.php', '', $suiteClassName);
+class PHPUnit_Runner_StandardTestSuiteLoader implements PHPUnit_Runner_TestSuiteLoader {
+	/**
+	 *
+	 * @param string $suiteClassName        	
+	 * @param string $suiteClassFile        	
+	 * @return ReflectionClass
+	 * @throws PHPUnit_Framework_Exception
+	 */
+	public function load($suiteClassName, $suiteClassFile = '') {
+		$suiteClassName = str_replace ( '.php', '', $suiteClassName );
+		
+		if (empty ( $suiteClassFile )) {
+			$suiteClassFile = PHPUnit_Util_Filesystem::classNameToFilename ( $suiteClassName );
+		}
+		
+		if (! class_exists ( $suiteClassName, FALSE )) {
+			PHPUnit_Util_Class::collectStart ();
+			$filename = PHPUnit_Util_Fileloader::checkAndLoad ( $suiteClassFile );
+			$loadedClasses = PHPUnit_Util_Class::collectEnd ();
+		}
+		
+		if (! class_exists ( $suiteClassName, FALSE ) && ! empty ( $loadedClasses )) {
+			$offset = 0 - strlen ( $suiteClassName );
+			
+			foreach ( $loadedClasses as $loadedClass ) {
+				$class = new ReflectionClass ( $loadedClass );
+				if (substr ( $loadedClass, $offset ) === $suiteClassName && $class->getFileName () == $filename) {
+					$suiteClassName = $loadedClass;
+					break;
+				}
+			}
+		}
+		
+		if (! class_exists ( $suiteClassName, FALSE ) && ! empty ( $loadedClasses )) {
+			$testCaseClass = 'PHPUnit_Framework_TestCase';
+			
+			foreach ( $loadedClasses as $loadedClass ) {
+				$class = new ReflectionClass ( $loadedClass );
+				$classFile = $class->getFileName ();
+				
+				if ($class->isSubclassOf ( $testCaseClass ) && ! $class->isAbstract ()) {
+					$suiteClassName = $loadedClass;
+					$testCaseClass = $loadedClass;
+					
+					if ($classFile == realpath ( $suiteClassFile )) {
+						break;
+					}
+				}
+				
+				if ($class->hasMethod ( 'suite' )) {
+					$method = $class->getMethod ( 'suite' );
+					
+					if (! $method->isAbstract () && $method->isPublic () && $method->isStatic ()) {
+						$suiteClassName = $loadedClass;
+						
+						if ($classFile == realpath ( $suiteClassFile )) {
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		if (class_exists ( $suiteClassName, FALSE )) {
+			$class = new ReflectionClass ( $suiteClassName );
+			
+			if ($class->getFileName () == realpath ( $suiteClassFile )) {
+				return $class;
+			}
+		}
+		
+		throw new PHPUnit_Framework_Exception ( sprintf ( "Class '%s' could not be found in '%s'.", 
 
-        if (empty($suiteClassFile)) {
-            $suiteClassFile = PHPUnit_Util_Filesystem::classNameToFilename(
-              $suiteClassName
-            );
-        }
-
-        if (!class_exists($suiteClassName, FALSE)) {
-            PHPUnit_Util_Class::collectStart();
-            $filename = PHPUnit_Util_Fileloader::checkAndLoad($suiteClassFile);
-            $loadedClasses = PHPUnit_Util_Class::collectEnd();
-        }
-
-        if (!class_exists($suiteClassName, FALSE) && !empty($loadedClasses)) {
-            $offset = 0 - strlen($suiteClassName);
-
-            foreach ($loadedClasses as $loadedClass) {
-                $class = new ReflectionClass($loadedClass);
-                if (substr($loadedClass, $offset) === $suiteClassName &&
-                    $class->getFileName() == $filename) {
-                    $suiteClassName = $loadedClass;
-                    break;
-                }
-            }
-        }
-
-        if (!class_exists($suiteClassName, FALSE) && !empty($loadedClasses)) {
-            $testCaseClass = 'PHPUnit_Framework_TestCase';
-
-            foreach ($loadedClasses as $loadedClass) {
-                $class     = new ReflectionClass($loadedClass);
-                $classFile = $class->getFileName();
-
-                if ($class->isSubclassOf($testCaseClass) &&
-                    !$class->isAbstract()) {
-                    $suiteClassName = $loadedClass;
-                    $testCaseClass  = $loadedClass;
-
-                    if ($classFile == realpath($suiteClassFile)) {
-                        break;
-                    }
-                }
-
-                if ($class->hasMethod('suite')) {
-                    $method = $class->getMethod('suite');
-
-                    if (!$method->isAbstract() &&
-                        $method->isPublic() &&
-                        $method->isStatic()) {
-                        $suiteClassName = $loadedClass;
-
-                        if ($classFile == realpath($suiteClassFile)) {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (class_exists($suiteClassName, FALSE)) {
-            $class = new ReflectionClass($suiteClassName);
-
-            if ($class->getFileName() == realpath($suiteClassFile)) {
-                return $class;
-            }
-        }
-
-        throw new PHPUnit_Framework_Exception(
-          sprintf(
-            "Class '%s' could not be found in '%s'.",
-
-            $suiteClassName,
-            $suiteClassFile
-          )
-        );
-    }
-
-    /**
-     * @param  ReflectionClass  $aClass
-     * @return ReflectionClass
-     */
-    public function reload(ReflectionClass $aClass)
-    {
-        return $aClass;
-    }
+		$suiteClassName, $suiteClassFile ) );
+	}
+	
+	/**
+	 *
+	 * @param ReflectionClass $aClass        	
+	 * @return ReflectionClass
+	 */
+	public function reload(ReflectionClass $aClass) {
+		return $aClass;
+	}
 }

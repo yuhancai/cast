@@ -1,4 +1,6 @@
-<h2>Viewing <span class='muted'>#<?php echo $item->id; ?></span></h2>
+<h2>
+	Viewing <span class='muted'>#<?php echo $item->id; ?></span>
+</h2>
 
 <p>
 	<strong>Itemname:</strong>

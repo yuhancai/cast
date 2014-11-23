@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Part of the Fuel framework.
  *
@@ -9,30 +10,27 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Core;
 
-
-interface Sanitization
-{
+interface Sanitization {
 	/**
 	 * Enable sanitization mode in the object
 	 *
-	 * @return  $this
+	 * @return $this
 	 */
 	public function sanitize();
-
+	
 	/**
 	 * Disable sanitization mode in the object
 	 *
-	 * @return  $this
+	 * @return $this
 	 */
 	public function unsanitize();
-
+	
 	/**
 	 * Returns the current sanitization state of the object
 	 *
-	 * @return  bool
+	 * @return bool
 	 */
 	public function sanitized();
 }

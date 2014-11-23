@@ -51,15 +51,14 @@
  * PHPUnit_Framework_Error_Deprecated::$enabled = FALSE;
  * </code>
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Error
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.3.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.3.0
  */
-class PHPUnit_Framework_Error_Deprecated extends PHPUnit_Framework_Error
-{
-    public static $enabled = TRUE;
+class PHPUnit_Framework_Error_Deprecated extends PHPUnit_Framework_Error {
+	public static $enabled = TRUE;
 }

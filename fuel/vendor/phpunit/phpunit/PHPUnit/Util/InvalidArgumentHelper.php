@@ -47,34 +47,24 @@
  * Factory for PHPUnit_Framework_Exception objects that are used to describe
  * invalid arguments passed to a function or method.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Util
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.4.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.4.0
  */
-class PHPUnit_Util_InvalidArgumentHelper
-{
-    /**
-     * @param integer $argument
-     * @param string  $type
-     * @param mixed   $value
-     */
-    public static function factory($argument, $type, $value = NULL)
-    {
-        $stack = debug_backtrace(FALSE);
-
-        return new PHPUnit_Framework_Exception(
-          sprintf(
-            'Argument #%d%sof %s::%s() must be a %s',
-            $argument,
-            $value !== NULL ? ' (' . $value . ')' : ' ',
-            $stack[1]['class'],
-            $stack[1]['function'],
-            $type
-          )
-        );
-    }
+class PHPUnit_Util_InvalidArgumentHelper {
+	/**
+	 *
+	 * @param integer $argument        	
+	 * @param string $type        	
+	 * @param mixed $value        	
+	 */
+	public static function factory($argument, $type, $value = NULL) {
+		$stack = debug_backtrace ( FALSE );
+		
+		return new PHPUnit_Framework_Exception ( sprintf ( 'Argument #%d%sof %s::%s() must be a %s', $argument, $value !== NULL ? ' (' . $value . ')' : ' ', $stack [1] ['class'], $stack [1] ['function'], $type ) );
+	}
 }

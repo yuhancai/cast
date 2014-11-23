@@ -46,50 +46,46 @@
 /**
  * Prints TestDox documentation in text format.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Util_TestDox
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.1.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.1.0
  */
-class PHPUnit_Util_TestDox_ResultPrinter_Text extends PHPUnit_Util_TestDox_ResultPrinter
-{
-    /**
-     * Handler for 'start class' event.
-     *
-     * @param  string $name
-     */
-    protected function startClass($name)
-    {
-        $this->write($this->currentTestClassPrettified . "\n");
-    }
-
-    /**
-     * Handler for 'on test' event.
-     *
-     * @param  string  $name
-     * @param  boolean $success
-     */
-    protected function onTest($name, $success = TRUE)
-    {
-        if ($success) {
-            $this->write(' [x] ');
-        } else {
-            $this->write(' [ ] ');
-        }
-
-        $this->write($name . "\n");
-    }
-
-    /**
-     * Handler for 'end class' event.
-     *
-     * @param  string $name
-     */
-    protected function endClass($name)
-    {
-        $this->write("\n");
-    }
+class PHPUnit_Util_TestDox_ResultPrinter_Text extends PHPUnit_Util_TestDox_ResultPrinter {
+	/**
+	 * Handler for 'start class' event.
+	 *
+	 * @param string $name        	
+	 */
+	protected function startClass($name) {
+		$this->write ( $this->currentTestClassPrettified . "\n" );
+	}
+	
+	/**
+	 * Handler for 'on test' event.
+	 *
+	 * @param string $name        	
+	 * @param boolean $success        	
+	 */
+	protected function onTest($name, $success = TRUE) {
+		if ($success) {
+			$this->write ( ' [x] ' );
+		} else {
+			$this->write ( ' [ ] ' );
+		}
+		
+		$this->write ( $name . "\n" );
+	}
+	
+	/**
+	 * Handler for 'end class' event.
+	 *
+	 * @param string $name        	
+	 */
+	protected function endClass($name) {
+		$this->write ( "\n" );
+	}
 }

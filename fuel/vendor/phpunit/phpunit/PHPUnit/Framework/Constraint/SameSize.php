@@ -46,28 +46,27 @@
 
 /**
  *
- *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Constraint
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.0
  */
-class PHPUnit_Framework_Constraint_SameSize extends PHPUnit_Framework_Constraint_Count
-{
-    /**
-     * @var integer
-     */
-    protected $expectedCount;
-
-    /**
-     * @param integer $expected
-     */
-    public function __construct($expected)
-    {
-        parent::__construct($this->getCountOf($expected));
-    }
+class PHPUnit_Framework_Constraint_SameSize extends PHPUnit_Framework_Constraint_Count {
+	/**
+	 *
+	 * @var integer
+	 */
+	protected $expectedCount;
+	
+	/**
+	 *
+	 * @param integer $expected        	
+	 */
+	public function __construct($expected) {
+		parent::__construct ( $this->getCountOf ( $expected ) );
+	}
 }

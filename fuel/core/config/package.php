@@ -18,19 +18,17 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-
-
-return array(
-
-	/**
-	 * sources - The name of the main bootstrap file.
-	 *
-	 * Set this to false or remove if you using mod_rewrite.
-	 */
-	'sources' => array(
-		'github.com/fuel-packages',
-	),
-
-);
+return array (
+		
+		/**
+		 * sources - The name of the main bootstrap file.
+		 *
+		 * Set this to false or remove if you using mod_rewrite.
+		 */
+		'sources' => array (
+				'github.com/fuel-packages' 
+		) 
+)
+;
 
 

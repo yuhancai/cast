@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
@@ -9,78 +10,89 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Auth\Model;
 
-class Auth_Rolepermission extends \Orm\Model
-{
+class Auth_Rolepermission extends \Orm\Model {
 	/**
-	 * @var  string  connection to use
+	 *
+	 * @var string connection to use
 	 */
 	protected static $_connection = null;
-
+	
 	/**
-	 * @var  string  table name to overwrite assumption
+	 *
+	 * @var string table name to overwrite assumption
 	 */
 	protected static $_table_name;
-
+	
 	/**
-	 * @var  array  name or names of the primary keys
+	 *
+	 * @var array name or names of the primary keys
 	 */
-	protected static $_primary_key = array('id');
-
-	/**
-	 * @var array	model properties
-	 */
-	protected static $_properties = array(
-		'id',
-		'role_id',
-		'perms_id',
-		'actions'         => array(
-			'data_type'	  => 'serialize',
-			'default' 	  => array(),
-			'null'		  => false,
-			'form'  	  => array('type' => false),
-		),
+	protected static $_primary_key = array (
+			'id' 
 	);
-
+	
 	/**
-	 * @var array	defined observers
+	 *
+	 * @var array properties
 	 */
-	protected static $_observers = array(
-		'Orm\\Observer_Typing' => array(
-			'events' => array('after_load', 'before_save', 'after_save')
-		),
+	protected static $_properties = array (
+			'id',
+			'role_id',
+			'perms_id',
+			'actions' => array (
+					'data_type' => 'serialize',
+					'default' => array (),
+					'null' => false,
+					'form' => array (
+							'type' => false 
+					) 
+			) 
 	);
-
+	
 	/**
-	 * @var array	belongs_to relationships
+	 *
+	 * @var array observers
 	 */
-	protected static $_belongs_to = array(
-		'role' => array(
-			'key_from' => 'role_id',
-			'model_to' => 'Model\\Auth_Role',
-			'key_to' => 'id',
-		),
-		'permission' => array(
-			'key_from' => 'perms_id',
-			'model_to' => 'Model\\Auth_Permission',
-			'key_to' => 'id',
-		),
+	protected static $_observers = array (
+			'Orm\\Observer_Typing' => array (
+					'events' => array (
+							'after_load',
+							'before_save',
+							'after_save' 
+					) 
+			) 
 	);
-
+	
+	/**
+	 *
+	 * @var array relationships
+	 */
+	protected static $_belongs_to = array (
+			'role' => array (
+					'key_from' => 'role_id',
+					'model_to' => 'Model\\Auth_Role',
+					'key_to' => 'id' 
+			),
+			'permission' => array (
+					'key_from' => 'perms_id',
+					'model_to' => 'Model\\Auth_Permission',
+					'key_to' => 'id' 
+			) 
+	);
+	
 	/**
 	 * init the class
 	 */
-   	public static function _init()
-	{
+	public static function _init() {
 		// auth config
-		\Config::load('ormauth', true);
-
+		\Config::load ( 'ormauth', true );
+		
 		// set the connection this model should use
-		static::$_connection = \Config::get('ormauth.db_connection');
-
+		static::$_connection = \Config::get ( 'ormauth.db_connection' );
+		
 		// set the models table name
-		static::$_table_name = \Config::get('ormauth.table_name', 'users').'_role_permissions';
+		static::$_table_name = \Config::get ( 'ormauth.table_name', 'users' ) . '_role_permissions';
 	}
 }

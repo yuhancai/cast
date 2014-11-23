@@ -45,136 +45,133 @@
  */
 
 /**
- * Abstract base class for constraints. which are placed upon any value.
+ * Abstract base class for constraints.
+ * which are placed upon any value.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Interface available since Release 3.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Interface available since Release 3.0.0
  */
-abstract class PHPUnit_Framework_Constraint implements Countable, PHPUnit_Framework_SelfDescribing
-{
-
-    /**
-     * Evaluates the constraint for parameter $other
-     *
-     * If $returnResult is set to FALSE (the default), an exception is thrown
-     * in case of a failure. NULL is returned otherwise.
-     *
-     * If $returnResult is TRUE, the result of the evaluation is returned as
-     * a boolean value instead: TRUE in case of success, FALSE in case of a
-     * failure.
-     *
-     * @param  mixed $other Value or object to evaluate.
-     * @param  string $description Additional information about the test
-     * @param  bool $returnResult Whether to return a result or throw an exception
-     * @return mixed
-     * @throws PHPUnit_Framework_ExpectationFailedException
-     */
-    public function evaluate($other, $description = '', $returnResult = FALSE)
-    {
-        $success = FALSE;
-
-        if ($this->matches($other)) {
-            $success = TRUE;
-        }
-
-        if ($returnResult) {
-            return $success;
-        }
-
-        if (!$success) {
-            $this->fail($other, $description);
-        }
-    }
-
-    /**
-     * Evaluates the constraint for parameter $other. Returns TRUE if the
-     * constraint is met, FALSE otherwise.
-     *
-     * This method can be overridden to implement the evaluation algorithm.
-     *
-     * @param mixed $other Value or object to evaluate.
-     * @return bool
-     */
-    protected function matches($other)
-    {
-        return FALSE;
-    }
-
-    /**
-     * Counts the number of constraint elements.
-     *
-     * @return integer
-     * @since  Method available since Release 3.4.0
-     */
-    public function count()
-    {
-        return 1;
-    }
-
-    /**
-     * Throws an exception for the given compared value and test description
-     *
-     * @param  mixed $other Evaluated value or object.
-     * @param  string $description Additional information about the test
-     * @param  PHPUnit_Framework_ComparisonFailure $comparisonFailure
-     * @throws PHPUnit_Framework_ExpectationFailedException
-     */
-    protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
-    {
-        $failureDescription = sprintf(
-          'Failed asserting that %s.',
-          $this->failureDescription($other)
-        );
-
-        $additionalFailureDescription = $this->additionalFailureDescription($other);
-        if ($additionalFailureDescription) {
-            $failureDescription .= "\n" . $additionalFailureDescription;
-        }
-
-        if (!empty($description)) {
-            $failureDescription = $description . "\n" . $failureDescription;
-        }
-
-        throw new PHPUnit_Framework_ExpectationFailedException(
-          $failureDescription,
-          $comparisonFailure
-        );
-    }
-
-    /**
-     * Return additional failure description where needed
-     *
-     * The function can be overridden to provide additional failure
-     * information like a diff
-     *
-     * @param  mixed $other Evaluated value or object.
-     * @return string
-     */
-    protected function additionalFailureDescription($other)
-    {
-        return "";
-    }
-
-    /**
-     * Returns the description of the failure
-     *
-     * The beginning of failure messages is "Failed asserting that" in most
-     * cases. This method should return the second part of that sentence.
-     *
-     * To provide additional failure information additionalFailureDescription
-     * can be used.
-     *
-     * @param  mixed $other Evaluated value or object.
-     * @return string
-     */
-    protected function failureDescription($other)
-    {
-        return PHPUnit_Util_Type::export($other) . ' ' . $this->toString();
-    }
+abstract class PHPUnit_Framework_Constraint implements Countable, PHPUnit_Framework_SelfDescribing {
+	
+	/**
+	 * Evaluates the constraint for parameter $other
+	 *
+	 * If $returnResult is set to FALSE (the default), an exception is thrown
+	 * in case of a failure. NULL is returned otherwise.
+	 *
+	 * If $returnResult is TRUE, the result of the evaluation is returned as
+	 * a boolean value instead: TRUE in case of success, FALSE in case of a
+	 * failure.
+	 *
+	 * @param mixed $other
+	 *        	Value or object to evaluate.
+	 * @param string $description
+	 *        	Additional information about the test
+	 * @param bool $returnResult
+	 *        	Whether to return a result or throw an exception
+	 * @return mixed
+	 * @throws PHPUnit_Framework_ExpectationFailedException
+	 */
+	public function evaluate($other, $description = '', $returnResult = FALSE) {
+		$success = FALSE;
+		
+		if ($this->matches ( $other )) {
+			$success = TRUE;
+		}
+		
+		if ($returnResult) {
+			return $success;
+		}
+		
+		if (! $success) {
+			$this->fail ( $other, $description );
+		}
+	}
+	
+	/**
+	 * Evaluates the constraint for parameter $other.
+	 * Returns TRUE if the
+	 * constraint is met, FALSE otherwise.
+	 *
+	 * This method can be overridden to implement the evaluation algorithm.
+	 *
+	 * @param mixed $other
+	 *        	Value or object to evaluate.
+	 * @return bool
+	 */
+	protected function matches($other) {
+		return FALSE;
+	}
+	
+	/**
+	 * Counts the number of constraint elements.
+	 *
+	 * @return integer
+	 * @since Method available since Release 3.4.0
+	 */
+	public function count() {
+		return 1;
+	}
+	
+	/**
+	 * Throws an exception for the given compared value and test description
+	 *
+	 * @param mixed $other
+	 *        	Evaluated value or object.
+	 * @param string $description
+	 *        	Additional information about the test
+	 * @param PHPUnit_Framework_ComparisonFailure $comparisonFailure        	
+	 * @throws PHPUnit_Framework_ExpectationFailedException
+	 */
+	protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL) {
+		$failureDescription = sprintf ( 'Failed asserting that %s.', $this->failureDescription ( $other ) );
+		
+		$additionalFailureDescription = $this->additionalFailureDescription ( $other );
+		if ($additionalFailureDescription) {
+			$failureDescription .= "\n" . $additionalFailureDescription;
+		}
+		
+		if (! empty ( $description )) {
+			$failureDescription = $description . "\n" . $failureDescription;
+		}
+		
+		throw new PHPUnit_Framework_ExpectationFailedException ( $failureDescription, $comparisonFailure );
+	}
+	
+	/**
+	 * Return additional failure description where needed
+	 *
+	 * The function can be overridden to provide additional failure
+	 * information like a diff
+	 *
+	 * @param mixed $other
+	 *        	Evaluated value or object.
+	 * @return string
+	 */
+	protected function additionalFailureDescription($other) {
+		return "";
+	}
+	
+	/**
+	 * Returns the description of the failure
+	 *
+	 * The beginning of failure messages is "Failed asserting that" in most
+	 * cases. This method should return the second part of that sentence.
+	 *
+	 * To provide additional failure information additionalFailureDescription
+	 * can be used.
+	 *
+	 * @param mixed $other
+	 *        	Evaluated value or object.
+	 * @return string
+	 */
+	protected function failureDescription($other) {
+		return PHPUnit_Util_Type::export ( $other ) . ' ' . $this->toString ();
+	}
 }

@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 		var class_prefix = "DBUtil::";
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>DBUtil - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>DBUtil - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -47,15 +46,20 @@
 
 			<h2>DBUtil Class</h2>
 
-			<p>The DBUtil class allows you to manage and perform routine operations on your databases.</p>
+			<p>The DBUtil class allows you to manage and perform routine
+				operations on your databases.</p>
 
 			<h3 id="managing">Managing functions</h3>
 
-			<p>DBUtil allows you to create, rename, alter and drop database fields.</p>
+			<p>DBUtil allows you to create, rename, alter and drop database
+				fields.</p>
 
 			<article>
 				<h4 class="method" id="method_set_connection">set_connection($connection)</h4>
-				<p>The <strong>set_connection</strong> method sets the default DBUtil connection for all methods.</p>
+				<p>
+					The <strong>set_connection</strong> method sets the default DBUtil
+					connection for all methods.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -89,8 +93,8 @@
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Set an alternative database connection for DBUtil
+							<td><pre class="php">
+									<code>// Set an alternative database connection for DBUtil
 DBUtil::set_connection('my_database_group');
 
 // Do other DBUtil calls with that connection.
@@ -98,16 +102,20 @@ DBUtil::set_connection('my_database_group');
 
 // And set it back to default.
 DBUtil::set_connection(null);
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_create_database">create_database($database, charset = null, $if_not_exists = true, $db = null)</h4>
-				<p>The <strong>create_database</strong> method creates a database.  Will throw a Database_Exception if it cannot.</p>
+				<h4 class="method" id="method_create_database">create_database($database,
+					charset = null, $if_not_exists = true, $db = null)</h4>
+				<p>
+					The <strong>create_database</strong> method creates a database.
+					Will throw a Database_Exception if it cannot.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -140,7 +148,9 @@ DBUtil::set_connection(null);
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -156,8 +166,8 @@ DBUtil::set_connection(null);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Create a database named `my_database`
+							<td><pre class="php">
+									<code>// Create a database named `my_database`
 DBUtil::create_database('my_database');
 
 // Catch the exception
@@ -176,17 +186,22 @@ DBUtil::create_database('new_database', 'utf8');
 
 // CREATE DATABASE IF NOT EXISTS `new_database  DEFAULT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci'
 DBUtil::create_database('new_database', 'utf8_unicode_ci');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
-				<p>If no charset is provided it will fall back to the charset of the active db group.</p>
+				<p>If no charset is provided it will fall back to the charset of
+					the active db group.</p>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_drop_database">drop_database($database, $db = null)</h4>
-				<p>The <strong>drop_database</strong> method drops a database.  Will throw a Database_Exception if it cannot.</p>
+				<h4 class="method" id="method_drop_database">drop_database($database,
+					$db = null)</h4>
+				<p>
+					The <strong>drop_database</strong> method drops a database. Will
+					throw a Database_Exception if it cannot.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -209,7 +224,9 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -225,8 +242,8 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Drop a database named `my_database`
+							<td><pre class="php">
+									<code>// Drop a database named `my_database`
 DBUtil::drop_database('my_database');
 
 // Catch the exception
@@ -238,16 +255,20 @@ catch(\Database_Exception $e)
 {
 	// Drop failed...
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_table_exists">table_exists($table, $db = null)</h4>
-				<p>The <strong>table_exists</strong> method checks if a given table exists.</p>
+				<h4 class="method" id="method_table_exists">table_exists($table,
+					$db = null)</h4>
+				<p>
+					The <strong>table_exists</strong> method checks if a given table
+					exists.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -270,7 +291,9 @@ catch(\Database_Exception $e)
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -282,8 +305,8 @@ catch(\Database_Exception $e)
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Check if table named 'my_table' exists
+							<td><pre class="php">
+									<code>// Check if table named 'my_table' exists
 if(DBUtil::table_exists('my_table'))
 {
 	// Table exists
@@ -291,16 +314,19 @@ if(DBUtil::table_exists('my_table'))
 {
 	// Table does NOT exist, create it!
 }</code>
-								</pre>
-							</td>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_drop_table">drop_table($table, $db = null)</h4>
-				<p>The <strong>drop_table</strong> method drops a table.  Will throw a Database_Exception if it cannot.</p>
+				<h4 class="method" id="method_drop_table">drop_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>drop_table</strong> method drops a table. Will throw a
+					Database_Exception if it cannot.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -323,7 +349,9 @@ if(DBUtil::table_exists('my_table'))
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -339,8 +367,8 @@ if(DBUtil::table_exists('my_table'))
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Drop a table named `my_table`
+							<td><pre class="php">
+									<code>// Drop a table named `my_table`
 DBUtil::drop_table('my_table');
 
 // Catch the exception
@@ -352,16 +380,19 @@ catch(\Database_Exception $e)
 {
 	// Drop failed...
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_rename_table">rename_table($table, $new_table_name, $db = null)</h4>
-				<p>The <strong>rename_table</strong> method renames a table.</p>
+				<h4 class="method" id="method_rename_table">rename_table($table,
+					$new_table_name, $db = null)</h4>
+				<p>
+					The <strong>rename_table</strong> method renames a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -400,8 +431,8 @@ catch(\Database_Exception $e)
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Rename `my_table` to `my_new_table`
+							<td><pre class="php">
+									<code>// Rename `my_table` to `my_new_table`
 DBUtil::rename_table('my_table', 'my_new_table');
 
 // Catch the exception
@@ -413,16 +444,20 @@ catch(\Database_Exception $e)
 {
 	// Rename failed...
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_create_table">create_table($table, $fields, $primary_keys = array(), $if_not_exists = true, $engine = false, $charset = null, $foreign_keys = array(), $db = null)</h4>
-				<p>The <strong>create_table</strong> method creates a table.</p>
+				<h4 class="method" id="method_create_table">create_table($table,
+					$fields, $primary_keys = array(), $if_not_exists = true, $engine =
+					false, $charset = null, $foreign_keys = array(), $db = null)</h4>
+				<p>
+					The <strong>create_table</strong> method creates a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -465,17 +500,24 @@ catch(\Database_Exception $e)
 									</tr>
 									<tr>
 										<th><kbd>$charset</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
-										<td>the default charset, falls back to the active db group charset</td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
+										<td>the default charset, falls back to the active db
+											group charset</td>
 									</tr>
 									<tr>
 										<th><kbd>$foreign_keys</kbd></th>
 										<td><strong>array()</strong></td>
-										<td>array of foreign key constraints definitions. The array keys 'key' and 'reference' are required and throw an error if missing, all others are optional.</td>
+										<td>array of foreign key constraints definitions. The
+											array keys 'key' and 'reference' are required and throw an
+											error if missing, all others are optional.</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -491,8 +533,8 @@ catch(\Database_Exception $e)
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::create_table(
+							<td><pre class="php">
+									<code>\DBUtil::create_table(
 	'users',
 	array(
 		'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
@@ -537,8 +579,8 @@ CREATE TABLE `users` (
 	CONSTRAINT constraintA FOREIGN KEY (keyA) REFERENCES table (field) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (keyB) REFERENCES table (fieldA, fieldB)
 ) ENGINE = InnoDB  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-*/</code></pre>
-							</td>
+*/</code>
+								</pre></td>
 						</tr>
 						<tr>
 							<th>Possible parameters</th>
@@ -578,7 +620,8 @@ CREATE TABLE `users` (
 									</tr>
 									<tr>
 										<th><kbd>auto_increment</kbd></th>
-										<td>set to <em>true</em> to use auto incrementing</td>
+										<td>set to <em>true</em> to use auto incrementing
+										</td>
 									</tr>
 									<tr>
 										<th><kbd>comment</kbd></th>
@@ -590,8 +633,13 @@ CREATE TABLE `users` (
 					</tbody>
 				</table>
 
-				<p>Default fields values are escaped by default. In some cases you might want not to escape this value. If so, you can use <a href="./db.html#method_expr">DB::expr</a>.</p>
-				<pre class="php"><code>\DBUtil::create_table('users', array(
+				<p>
+					Default fields values are escaped by default. In some cases you
+					might want not to escape this value. If so, you can use <a
+						href="./db.html#method_expr">DB::expr</a>.
+				</p>
+				<pre class="php">
+					<code>\DBUtil::create_table('users', array(
 	'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 	'name' => array('type' => 'text'),
 	'email' => array('constraint' => 50, 'type' => 'varchar'),
@@ -599,15 +647,21 @@ CREATE TABLE `users` (
 	'created' => array('type' => 'timestamp', 'default' => \DB::expr('CURRENT_TIMESTAMP')),
 	'password' => array('constraint' => 125, 'type' => 'varchar'),
 ), array('id'));
-</code></pre>
+</code>
+				</pre>
 
-				<p>Escaping values work the same for DBUtil::add_fields and DBUtil::modify_fields</p>
+				<p>Escaping values work the same for DBUtil::add_fields and
+					DBUtil::modify_fields</p>
 
 			</article>
 
 			<article>
-				<h4 class="method" id="method_field_exists">field_exists($table, $columns, $db = null)</h4>
-				<p>The <strong>field_exists</strong> method checks if given field(s) in a given table exists.</p>
+				<h4 class="method" id="method_field_exists">field_exists($table,
+					$columns, $db = null)</h4>
+				<p>
+					The <strong>field_exists</strong> method checks if given field(s)
+					in a given table exists.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -635,7 +689,9 @@ CREATE TABLE `users` (
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -647,8 +703,8 @@ CREATE TABLE `users` (
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>
+							<td><pre class="php">
+									<code>
 if(DBUtil::field_exists('my_table', array('my_field_or_column')))
 {
 	// Fields exist
@@ -657,16 +713,18 @@ else
 {
 	// Fields are not available on the table
 }</code>
-								</pre>
-							</td>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_add_fields">add_fields($table, $fields, $db = null)</h4>
-				<p>The <strong>add_fields</strong> method adds fields to a table.</p>
+				<h4 class="method" id="method_add_fields">add_fields($table,
+					$fields, $db = null)</h4>
+				<p>
+					The <strong>add_fields</strong> method adds fields to a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -694,7 +752,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -710,21 +770,24 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::add_fields('users', array(
+							<td><pre class="php">
+									<code>\DBUtil::add_fields('users', array(
 	'surname' => array('constraint' => 100, 'type' => 'varchar'),
 	'twitter_name' => array('constraint' => 100, 'type' => 'varchar'),
 ));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_drop_fields">drop_fields($table, $fields, $db = null)</h4>
-				<p>The <strong>drop_fields</strong> method drops fields from a table.</p>
+				<h4 class="method" id="method_drop_fields">drop_fields($table,
+					$fields, $db = null)</h4>
+				<p>
+					The <strong>drop_fields</strong> method drops fields from a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -752,7 +815,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -768,17 +833,20 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::drop_fields('users', 'surname');</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>\DBUtil::drop_fields('users', 'surname');</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_modify_fields">modify_fields($table, $fields, $db = null)</h4>
-				<p>The <strong>modify_fields</strong> method alters fields in a table.</p>
+				<h4 class="method" id="method_modify_fields">modify_fields($table,
+					$fields, $db = null)</h4>
+				<p>
+					The <strong>modify_fields</strong> method alters fields in a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -806,7 +874,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -822,21 +892,25 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::modify_fields('users2', array(
+							<td><pre class="php">
+									<code>\DBUtil::modify_fields('users2', array(
 	'name' => array('constraint' => 100, 'type' => 'varchar', 'charset' => 'utf8_general_ci'),
 	'title' => array('constraint' => 50, 'type' => 'varchar', 'default' => 'mrs.'),
 ));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_create_index">create_index($table, $index_columns, $index_name, $index = '', $db = null)</h4>
-				<p>The <strong>create_index</strong> method allows you to create secondary indexes on a table.</p>
+				<h4 class="method" id="method_create_index">create_index($table,
+					$index_columns, $index_name, $index = '', $db = null)</h4>
+				<p>
+					The <strong>create_index</strong> method allows you to create
+					secondary indexes on a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -870,11 +944,15 @@ else
 									<tr>
 										<th><kbd>$index</kbd></th>
 										<td><em>optional</em></td>
-										<td>type of index to be created.<br />Currently supported: UNIQUE, FULLTEXT, SPATIAL, NONCLUSTERED</td>
+										<td>type of index to be created.<br />Currently
+											supported: UNIQUE, FULLTEXT, SPATIAL, NONCLUSTERED
+										</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -890,8 +968,8 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::create_index('table', 'name');
+							<td><pre class="php">
+									<code>\DBUtil::create_index('table', 'name');
 // produces CREATE INDEX name ON table ( `name` )
 
 \DBUtil::create_index('table', array('nameA', 'nameB'), 'name');
@@ -899,16 +977,20 @@ else
 
 \DBUtil::create_index('table', array('nameA' => 'ASC', 'nameB'), 'name', 'fulltext');
 // produces CREATE FULLTEXT INDEX name ON table ( `nameA` ASC, `nameB` )
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_drop_index">drop_index($table, $index_name, $db = null)</h4>
-				<p>The <strong>drop_index</strong> method allows you to drop a secondary index from a table.</p>
+				<h4 class="method" id="method_drop_index">drop_index($table,
+					$index_name, $db = null)</h4>
+				<p>
+					The <strong>drop_index</strong> method allows you to drop a
+					secondary index from a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -936,7 +1018,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -952,19 +1036,23 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::drop_index('table', 'name');
+							<td><pre class="php">
+									<code>\DBUtil::drop_index('table', 'name');
 // produces DROP INDEX name ON table
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_add_foregin_key">add_foregin_key($table, $foreign_key)</h4>
-				<p>The <strong>add_foreign_key</strong> method allows you to add a foreign key to a table after it's creation.</p>
+				<h4 class="method" id="method_add_foregin_key">add_foregin_key($table,
+					$foreign_key)</h4>
+				<p>
+					The <strong>add_foreign_key</strong> method allows you to add a
+					foreign key to a table after it's creation.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -999,12 +1087,13 @@ else
 						</tr>
 						<tr>
 							<th>Throws</th>
-							<td>\InvalidArgumentException on invalid input, \Database_Exception on failure</td>
+							<td>\InvalidArgumentException on invalid input,
+								\Database_Exception on failure</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::add_foreign_key('users', array(
+							<td><pre class="php">
+									<code>\DBUtil::add_foreign_key('users', array(
 	'constraint' => 'constraintA',
 	'key' => 'keyA',
 	'reference' => array(
@@ -1013,16 +1102,20 @@ else
 	),
 	'on_update' => 'CASCADE',
 	'on_delete' => 'RESTRICT'
-));</code></pre>
-							</td>
+));</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_drop_foreign_key">drop_foreign_key($table, $fk_name)</h4>
-				<p>The <strong>drop_foreign_key</strong> method allows you to drop a foreign key from a table.</p>
+				<h4 class="method" id="method_drop_foreign_key">drop_foreign_key($table,
+					$fk_name)</h4>
+				<p>
+					The <strong>drop_foreign_key</strong> method allows you to drop a
+					foreign key from a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1061,11 +1154,11 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::drop_foreign_key('table', 'name');
+							<td><pre class="php">
+									<code>\DBUtil::drop_foreign_key('table', 'name');
 // produces ALTER TABLE `table` DROP FOREIGN KEY name
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -1074,8 +1167,11 @@ else
 			<h3 id="database-operations">Database operations</h3>
 
 			<article>
-				<h4 class="method" id="method_truncate_table">truncate_table($table, $db = null)</h4>
-				<p>The <strong>truncate_table</strong> method truncates a table.</p>
+				<h4 class="method" id="method_truncate_table">truncate_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>truncate_table</strong> method truncates a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1098,7 +1194,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -1114,17 +1212,20 @@ else
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>\DBUtil::truncate_table('my_table');</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>\DBUtil::truncate_table('my_table');</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_analyze_table">analyze_table($table, $db = null)</h4>
-				<p>The <strong>analyze_table</strong> method analyzes a table.</p>
+				<h4 class="method" id="method_analyze_table">analyze_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>analyze_table</strong> method analyzes a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1147,7 +1248,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -1155,25 +1258,29 @@ else
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>True</em> if the table is OK. <em>False</em> when needs attention. If not supported it logs the error message.</td>
+							<td><em>True</em> if the table is OK. <em>False</em> when
+								needs attention. If not supported it logs the error message.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>if(\DBUtil::analyze_table('table_name') === false)
+							<td><pre class="php">
+									<code>if(\DBUtil::analyze_table('table_name') === false)
 {
 	// Do something
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_check_table">check_table($table, $db = null)</h4>
-				<p>The <strong>check_table</strong> method checks a table.</p>
+				<h4 class="method" id="method_check_table">check_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>check_table</strong> method checks a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1196,7 +1303,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -1204,25 +1313,29 @@ else
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>True</em> if the table is OK. <em>False</em> when needs attention. If not supported it logs the error message.</td>
+							<td><em>True</em> if the table is OK. <em>False</em> when
+								needs attention. If not supported it logs the error message.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>if(\DBUtil::check_table('table_name') === false)
+							<td><pre class="php">
+									<code>if(\DBUtil::check_table('table_name') === false)
 {
 	// Do something
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_optimize_table">optimize_table($table, $db = null)</h4>
-				<p>The <strong>optimize_table</strong> method optimizes a table.</p>
+				<h4 class="method" id="method_optimize_table">optimize_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>optimize_table</strong> method optimizes a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1245,7 +1358,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -1253,25 +1368,30 @@ else
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>True</em> if the table is OK or optimized. <em>False</em> on failure. If not supported or failed it logs the error message.</td>
+							<td><em>True</em> if the table is OK or optimized. <em>False</em>
+								on failure. If not supported or failed it logs the error
+								message.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>if(\DBUtil::optimize_table('table_name') === false)
+							<td><pre class="php">
+									<code>if(\DBUtil::optimize_table('table_name') === false)
 {
 	// Do something
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_repair_table">repair_table($table, $db = null)</h4>
-				<p>The <strong>repair_table</strong> method repairs a table.</p>
+				<h4 class="method" id="method_repair_table">repair_table($table,
+					$db = null)</h4>
+				<p>
+					The <strong>repair_table</strong> method repairs a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1294,7 +1414,9 @@ else
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td class="description">The database connection.</td>
 									</tr>
 								</table>
@@ -1302,17 +1424,19 @@ else
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>True</em> if the table is OK or repaired. <em>false</em> on failure. If not supported or failed it logs the error message.</td>
+							<td><em>True</em> if the table is OK or repaired. <em>false</em>
+								on failure. If not supported or failed it logs the error
+								message.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>if(\DBUtil::repair_table('table_name') === false)
+							<td><pre class="php">
+									<code>if(\DBUtil::repair_table('table_name') === false)
 {
 	// Do something
 }
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -1322,7 +1446,9 @@ else
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

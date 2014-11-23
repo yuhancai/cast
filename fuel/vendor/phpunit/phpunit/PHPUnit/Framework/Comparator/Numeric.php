@@ -46,67 +46,59 @@
 /**
  * Compares numerical values for equality.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Comparator
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @author     Alexander <iam.asm89@gmail.com>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.0
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @author Alexander <iam.asm89@gmail.com>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.0
  */
-class PHPUnit_Framework_Comparator_Numeric extends PHPUnit_Framework_Comparator_Scalar
-{
-    /**
-     * Returns whether the comparator can compare two values.
-     *
-     * @param  mixed $expected The first value to compare
-     * @param  mixed $actual The second value to compare
-     * @return boolean
-     */
-    public function accepts($expected, $actual)
-    {
-        // all numerical values, but not if one of them is a double
-        return is_numeric($expected) && is_numeric($actual) && !(is_double($expected) || is_double($actual));
-    }
+class PHPUnit_Framework_Comparator_Numeric extends PHPUnit_Framework_Comparator_Scalar {
+	/**
+	 * Returns whether the comparator can compare two values.
+	 *
+	 * @param mixed $expected
+	 *        	The first value to compare
+	 * @param mixed $actual
+	 *        	The second value to compare
+	 * @return boolean
+	 */
+	public function accepts($expected, $actual) {
+		// all numerical values, but not if one of them is a double
+		return is_numeric ( $expected ) && is_numeric ( $actual ) && ! (is_double ( $expected ) || is_double ( $actual ));
+	}
+	
+	/**
+	 * Asserts that two values are equal.
+	 *
+	 * @param mixed $expected
+	 *        	The first value to compare
+	 * @param mixed $actual
+	 *        	The second value to compare
+	 * @param float $delta
+	 *        	The allowed numerical distance between two values to
+	 *        	consider them equal
+	 * @param bool $canonicalize
+	 *        	If set to TRUE, arrays are sorted before
+	 *        	comparison
+	 * @param bool $ignoreCase
+	 *        	If set to TRUE, upper- and lowercasing is
+	 *        	ignored when comparing string values
+	 * @throws PHPUnit_Framework_ComparisonFailure Thrown when the comparison
+	 *         fails. Contains information about the
+	 *         specific errors that lead to the failure.
+	 */
+	public function assertEquals($expected, $actual, $delta = 0, $canonicalize = FALSE, $ignoreCase = FALSE) {
+		if (is_infinite ( $actual ) && is_infinite ( $expected )) {
+			return;
+		}
+		
+		if ((is_infinite ( $actual ) xor is_infinite ( $expected )) || (is_nan ( $actual ) or is_nan ( $expected )) || abs ( $actual - $expected ) > $delta) {
+			throw new PHPUnit_Framework_ComparisonFailure ( $expected, $actual, '', '', FALSE, sprintf ( 'Failed asserting that %s matches expected %s.', 
 
-    /**
-     * Asserts that two values are equal.
-     *
-     * @param  mixed $expected The first value to compare
-     * @param  mixed $actual The second value to compare
-     * @param  float $delta The allowed numerical distance between two values to
-     *                      consider them equal
-     * @param  bool  $canonicalize If set to TRUE, arrays are sorted before
-     *                             comparison
-     * @param  bool  $ignoreCase If set to TRUE, upper- and lowercasing is
-     *                           ignored when comparing string values
-     * @throws PHPUnit_Framework_ComparisonFailure Thrown when the comparison
-     *                           fails. Contains information about the
-     *                           specific errors that lead to the failure.
-     */
-    public function assertEquals($expected, $actual, $delta = 0, $canonicalize = FALSE, $ignoreCase = FALSE)
-    {
-        if (is_infinite($actual) && is_infinite($expected)) {
-            return;
-        }
-
-        if ((is_infinite($actual) XOR is_infinite($expected)) ||
-            (is_nan($actual) OR is_nan($expected)) ||
-            abs($actual - $expected) > $delta) {
-            throw new PHPUnit_Framework_ComparisonFailure(
-              $expected,
-              $actual,
-              '',
-              '',
-              FALSE,
-              sprintf(
-                'Failed asserting that %s matches expected %s.',
-
-                PHPUnit_Util_Type::export($actual),
-                PHPUnit_Util_Type::export($expected)
-              )
-            );
-        }
-    }
+			PHPUnit_Util_Type::export ( $actual ), PHPUnit_Util_Type::export ( $expected ) ) );
+		}
+	}
 }

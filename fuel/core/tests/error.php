@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Part of the Fuel framework.
  *
@@ -9,7 +10,6 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Core;
 
 /**
@@ -18,9 +18,9 @@ namespace Fuel\Core;
  * @group Core
  * @group Error
  */
-class Test_Error extends TestCase
-{
- 	public function test_foo() {}
+class Test_Error extends TestCase {
+	public function test_foo() {
+	}
 }
 // TestCase {
 // 	public function test_foo() {}

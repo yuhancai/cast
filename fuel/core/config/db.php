@@ -18,7 +18,6 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-
 return array(
 
 	/*
@@ -26,58 +25,58 @@ return array(
 	 * the configuration to be used will be determined by the 'active' value
 	 */
 	'active' => 'default',
-
-	/**
-	 * Base PDO config
-	 */
-	'default' => array(
-		'type'        => 'pdo',
-		'connection'  => array(
-			'persistent' => false,
-			'compress'   => false,
+		
+		/**
+		 * Base PDO config
+		 */
+		'default' => array (
+				'type' => 'pdo',
+				'connection' => array (
+						'persistent' => false,
+						'compress' => false 
+				),
+				'identifier' => '`',
+				'table_prefix' => '',
+				'charset' => 'utf8',
+				'collation' => false,
+				'enable_cache' => true,
+				'profiling' => false,
+				'readonly' => false 
 		),
-		'identifier'   => '`',
-		'table_prefix' => '',
-		'charset'      => 'utf8',
-		'collation'    => false,
-		'enable_cache' => true,
-		'profiling'    => false,
-		'readonly'     => false,
-	),
-
-	/**
-	 * Base MySQLi config
-	 *
-
-	'default' => array(
-		'type'        => 'mysqli',
-		'connection'  => array(
-			'hostname'   => '',
-			'username'   => '',
-			'password'   => '',
-			'database'   => '',
-			'persistent' => false,
-		),
-		'identifier'   => '`',
-		'table_prefix' => '',
-		'charset'      => 'utf8',
-		'collation'    => false,
-		'enable_cache' => true,
-		'profiling'    => false,
-		'readonly'     => false,
-	),
-	 */
-
-	/**
-	 * Base Redis config
-	 */
-	'redis' => array(
-		'default' => array(
-			'hostname'  => '127.0.0.1',
-			'port'      => 6379,
-			'timeout'	=> null,
-			'database'  => 0
-		)
-	),
-
-);
+		
+		/**
+		 * Base MySQLi config
+		 *
+		 *
+		 * 'default' => array(
+		 * 'type' => 'mysqli',
+		 * 'connection' => array(
+		 * 'hostname' => '',
+		 * 'username' => '',
+		 * 'password' => '',
+		 * 'database' => '',
+		 * 'persistent' => false,
+		 * ),
+		 * 'identifier' => '`',
+		 * 'table_prefix' => '',
+		 * 'charset' => 'utf8',
+		 * 'collation' => false,
+		 * 'enable_cache' => true,
+		 * 'profiling' => false,
+		 * 'readonly' => false,
+		 * ),
+		 */
+		
+		/**
+		 * Base Redis config
+		 */
+		'redis' => array (
+				'default' => array (
+						'hostname' => '127.0.0.1',
+						'port' => 6379,
+						'timeout' => null,
+						'database' => 0 
+				) 
+		) 
+)
+;

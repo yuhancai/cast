@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 		var class_prefix = "DB::";
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>DB - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>DB - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -47,14 +46,17 @@
 
 			<h2>DB Class</h2>
 
-			<p>The DB class allows you to build and execute database queries and fetch the result.</p>
+			<p>The DB class allows you to build and execute database queries
+				and fetch the result.</p>
 
 			<article>
 				<h4 class="method" id="method_query">query($sql, $type = null)</h4>
 				<p>
-					The <strong>query</strong> method returns a new Database_Query_Builder object. The exact
-					object depends on the type passed. If no type was passed, Fuel chooses DB::SELECT if the SQL query begins with 'SELECT', and it will return a
-					<a href="qb_select.html">Database_Query_Builder_Select</a> object.
+					The <strong>query</strong> method returns a new
+					Database_Query_Builder object. The exact object depends on the type
+					passed. If no type was passed, Fuel chooses DB::SELECT if the SQL
+					query begins with 'SELECT', and it will return a <a
+						href="qb_select.html">Database_Query_Builder_Select</a> object.
 				</p>
 				<table class="method">
 					<tbody>
@@ -79,36 +81,40 @@
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>null</em></td>
-										<td>SQL query type. Possible types are: DB::SELECT, DB::INSERT, DB::UPDATE and DB::DELETE.</td>
+										<td>SQL query type. Possible types are: DB::SELECT,
+											DB::INSERT, DB::UPDATE and DB::DELETE.</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a Database_Query_Builder</a> object of the requested type.</td>
+							<td>Returns a Database_Query_Builder</a> object of the requested
+								type.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: SELECT * FROM `users`
+							<td><pre class="php">
+									<code>// Will prepare: SELECT * FROM `users`
 $query = DB::query('SELECT * FROM `users`');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
-				<p class="note">
-					Note that it is important to pass the correct type. The database driver
-					will treat them differently.
-					If you have a query that must return a resultset, but is not a SELECT, use
-					DB::SELECT to make sure the result is returned correctly.
-				</p>
+				<p class="note">Note that it is important to pass the correct
+					type. The database driver will treat them differently. If you have
+					a query that must return a resultset, but is not a SELECT, use
+					DB::SELECT to make sure the result is returned correctly.</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_last_query">last_query()</h4>
-				<p>The <strong>last_query</strong> method returns the last executed SQL query.</p>
+				<p>
+					The <strong>last_query</strong> method returns the last executed
+					SQL query.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -138,24 +144,27 @@ $query = DB::query('SELECT * FROM `users`');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// execute a query
+							<td><pre class="php">
+									<code>// execute a query
 $user = DB::select()->from('users')->where('id', 1);
 
 echo DB::last_query();
 // SELECT * FROM `users` WHERE `id` = 1
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-					<h4 class="method" id="method_select">select()</h4>
-					<p>The <strong>select</strong> method returns a new <a href="qb_select.html">Database_Query_Builder_Select</a> object.</p>
-					<table class="method">
-						<tbody>
+				<h4 class="method" id="method_select">select()</h4>
+				<p>
+					The <strong>select</strong> method returns a new <a
+						href="qb_select.html">Database_Query_Builder_Select</a> object.
+				</p>
+				<table class="method">
+					<tbody>
 						<tr>
 							<th>Static</th>
 							<td>Yes</td>
@@ -179,18 +188,20 @@ echo DB::last_query();
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a <a href="qb_select.html">Database_Query_Builder_Select</a> object.</td>
+							<td>Returns a <a href="qb_select.html">Database_Query_Builder_Select</a>
+								object.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: SELECT *
+							<td><pre class="php">
+									<code>// Will prepare: SELECT *
 $query = DB::select();
 
 // Will prepare: SELECT `id`, `name`
 $query = DB::select('id', 'name');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -198,7 +209,11 @@ $query = DB::select('id', 'name');
 
 			<article>
 				<h4 class="method" id="method_select_array">select_array($columns)</h4>
-				<p>The <strong>select_array</strong> method returns a <a href="qb_select.html">new Database_Query_Builder_Select</a> object.</p>
+				<p>
+					The <strong>select_array</strong> method returns a <a
+						href="qb_select.html">new Database_Query_Builder_Select</a>
+					object.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -224,26 +239,32 @@ $query = DB::select('id', 'name');
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a <a href="qb_select.html">Database_Query_Builder_Select</a> object.</td>
+							<td>Returns a <a href="qb_select.html">Database_Query_Builder_Select</a>
+								object.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: SELECT *
+							<td><pre class="php">
+									<code>// Will prepare: SELECT *
 $query = DB::select_array();
 
 // Will prepare: SELECT `id`, `name`
 $query = DB::select_array(array('id', 'name'));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_insert">insert($table = null, $columns = array())</h4>
-				<p>The <strong>insert</strong> method returns a new <a href="qb_insert.html">Database_Query_Builder_Insert</a> object.</p>
+				<h4 class="method" id="method_insert">insert($table = null,
+					$columns = array())</h4>
+				<p>
+					The <strong>insert</strong> method returns a new <a
+						href="qb_insert.html">Database_Query_Builder_Insert</a> object.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -274,18 +295,20 @@ $query = DB::select_array(array('id', 'name'));
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a <a href="qb_insert.html">Database_Query_Builder_Insert</a> object.</td>
+							<td>Returns a <a href="qb_insert.html">Database_Query_Builder_Insert</a>
+								object.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: INSERT INTO `table_name`
+							<td><pre class="php">
+									<code>// Will prepare: INSERT INTO `table_name`
 $query = DB::insert('table_name');
 
 // Will prepare: INSERT INTO `table_name` (`id`, `name`)
 $query = DB::insert('table_name', array('id', 'name'));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -293,7 +316,10 @@ $query = DB::insert('table_name', array('id', 'name'));
 
 			<article>
 				<h4 class="method" id="method_update">update($table = null)</h4>
-				<p>The <strong>update</strong> method returns a new <a href="qb_update.html">Database_Query_Builder_Update</a> object.</p>
+				<p>
+					The <strong>update</strong> method returns a new <a
+						href="qb_update.html">Database_Query_Builder_Update</a> object.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -319,15 +345,17 @@ $query = DB::insert('table_name', array('id', 'name'));
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a <a href="qb_update.html">Database_Query_Builder_Update</a> object.</td>
+							<td>Returns a <a href="qb_update.html">Database_Query_Builder_Update</a>
+								object.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: UPDATE `table_name`
+							<td><pre class="php">
+									<code>// Will prepare: UPDATE `table_name`
 $query = DB::update('table_name');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -335,7 +363,10 @@ $query = DB::update('table_name');
 
 			<article>
 				<h4 class="method" id="method_delete">delete($table = null)</h4>
-				<p>The <strong>delete</strong> method returns a new <a href="qb_delete.html">Database_Query_Builder_Delete</a> object.</p>
+				<p>
+					The <strong>delete</strong> method returns a new <a
+						href="qb_delete.html">Database_Query_Builder_Delete</a> object.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -361,15 +392,17 @@ $query = DB::update('table_name');
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns a <a href="qb_delete.html">Database_Query_Builder_Delete</a> object.</td>
+							<td>Returns a <a href="qb_delete.html">Database_Query_Builder_Delete</a>
+								object.
+							</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// Will prepare: DELETE FROM `table_name`
+							<td><pre class="php">
+									<code>// Will prepare: DELETE FROM `table_name`
 $query = DB::delete('table_name');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -377,7 +410,10 @@ $query = DB::delete('table_name');
 
 			<article>
 				<h4 class="method" id="method_expr">expr($expression)</h4>
-				<p>The <strong>expr</strong> method returns a new Database_Expression object.</p>
+				<p>
+					The <strong>expr</strong> method returns a new Database_Expression
+					object.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -407,25 +443,27 @@ $query = DB::delete('table_name');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// returns new Database_Expression('COUNT(table_name.table_column)');
+							<td><pre class="php">
+									<code>// returns new Database_Expression('COUNT(table_name.table_column)');
 $expr = DB::expr('COUNT(table_name.table_column)');
 
 // prevents incorrect quoting of this expression in the generated query
-$expr = DB::expr('columnname + 1');</code></pre>
-							</td>
+$expr = DB::expr('columnname + 1');</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
-				<p class="note">
-					You have to use DB:expr() in your query for all expressions, i.e. for everything that is not a fieldname,
-					to make sure the value you pass isn't enclosed in quotes or backticks.
-				</p>
+				<p class="note">You have to use DB:expr() in your query for all
+					expressions, i.e. for everything that is not a fieldname, to make
+					sure the value you pass isn't enclosed in quotes or backticks.</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_quote">quote($string, $db = null)</h4>
-				<p>The <strong>quote</strong> method returns a quoted string for an SQL query.</p>
+				<p>
+					The <strong>quote</strong> method returns a quoted string for an
+					SQL query.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -460,22 +498,26 @@ $expr = DB::expr('columnname + 1');</code></pre>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// returns 'something\'s quoted'.
+							<td><pre class="php">
+									<code>// returns 'something\'s quoted'.
 $query = DB::quote("'something's quoted'");
 
 // returns 'something\'s quoted' through a defined database connection.
 $query = DB::quote("'something's quoted'", $db_connection);
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_quote_identifier">quote_identifier($string, $db)</h4>
-				<p>The <strong>quote_identifier</strong> method returns a quoted string for an SQL query.</p>
+				<h4 class="method" id="method_quote_identifier">quote_identifier($string,
+					$db)</h4>
+				<p>
+					The <strong>quote_identifier</strong> method returns a quoted
+					string for an SQL query.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -494,7 +536,8 @@ $query = DB::quote("'something's quoted'", $db_connection);
 									<tr>
 										<th><kbd>$string</kbd></th>
 										<td><em>required</em></td>
-										<td class="description">The string, or array of strings, to quote.</td>
+										<td class="description">The string, or array of strings,
+											to quote.</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
@@ -510,24 +553,28 @@ $query = DB::quote("'something's quoted'", $db_connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// `users`.`name`
+							<td><pre class="php">
+									<code>// `users`.`name`
 print_r(DB::quote_identifier('users.name'));
 
 // array(
 //    [0] => `users`.`name`
 // )
 print_r(DB::quote_identifier(array('users.name')));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_quote_table">quote_table($string, $db = null)</h4>
-				<p>The <strong>quote_table</strong> method returns a quoted string for an SQL query.</p>
+				<h4 class="method" id="method_quote_table">quote_table($string,
+					$db = null)</h4>
+				<p>
+					The <strong>quote_table</strong> method returns a quoted string for
+					an SQL query.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -546,7 +593,8 @@ print_r(DB::quote_identifier(array('users.name')));
 									<tr>
 										<th><kbd>$string</kbd></th>
 										<td><em>required</em></td>
-										<td class="description">The string, or array of strings, to quote.</td>
+										<td class="description">The string, or array of strings,
+											to quote.</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
@@ -562,25 +610,29 @@ print_r(DB::quote_identifier(array('users.name')));
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// `users`
+							<td><pre class="php">
+									<code>// `users`
 print_r(DB::quote_table('users'));
 
 // array(
 //    [0] => `users`
 // )
 print_r(DB::quote_identifier(array('users')));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_table_prefix">table_prefix($table, $db = null)</h4>
-				<p>The <strong>table_prefix</strong> method returns the table name with the configured prefix.
-				If not, then just the prefix is returned.</p>
+				<h4 class="method" id="method_table_prefix">table_prefix($table,
+					$db = null)</h4>
+				<p>
+					The <strong>table_prefix</strong> method returns the table name
+					with the configured prefix. If not, then just the prefix is
+					returned.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -615,19 +667,23 @@ print_r(DB::quote_identifier(array('users')));
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prefixed_table_name
+							<td><pre class="php">
+									<code>// prefixed_table_name
 print_r(DB::table_prefix('table_name'));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_escape">escape($string, $db = null)</h4>
-				<p>The <strong>escape</strong> method returns a escaped string for an SQL query.</p>
+				<h4 class="method" id="method_escape">escape($string, $db =
+					null)</h4>
+				<p>
+					The <strong>escape</strong> method returns a escaped string for an
+					SQL query.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -662,20 +718,24 @@ print_r(DB::table_prefix('table_name'));
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// 'or *\' \"'
+							<td><pre class="php">
+									<code>// 'or *\' \"'
 print_r(DB::escape('or *\' "'));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_list_columns">list_columns($table, $like = null, $db = null)</h4>
-				<p>The <strong>list_columns</strong> method return a lists all of the columns in a table.
-				Optionally, a LIKE string can be used to search for specific fields.</p>
+				<h4 class="method" id="method_list_columns">list_columns($table,
+					$like = null, $db = null)</h4>
+				<p>
+					The <strong>list_columns</strong> method return a lists all of the
+					columns in a table. Optionally, a LIKE string can be used to search
+					for specific fields.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -715,8 +775,8 @@ print_r(DB::escape('or *\' "'));
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>/*
+							<td><pre class="php">
+									<code>/*
 Array
 (
 	[id] => Array
@@ -776,17 +836,21 @@ Array
 )
 */
 print_r(DB::list_columns('users','%name%'));
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_list_tables">list_tables($like = null, $db = null)</h4>
-				<p>The <strong>list_tables</strong> method return a lists all of the tables in a database.
-				Optionally, a LIKE string can be used to search for specific tables.</p>
+				<h4 class="method" id="method_list_tables">list_tables($like =
+					null, $db = null)</h4>
+				<p>
+					The <strong>list_tables</strong> method return a lists all of the
+					tables in a database. Optionally, a LIKE string can be used to
+					search for specific tables.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -821,8 +885,8 @@ print_r(DB::list_columns('users','%name%'));
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>/*
+							<td><pre class="php">
+									<code>/*
 Array
 (
     [0] => areas
@@ -841,16 +905,20 @@ Array
 )
 */
 DB::list_tables('%sessions%');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_datatypes">datatype($type, $db = null)</h4>
-				<p>The <strong>datatype</strong> method returns a normalized array describing the SQL data type.</p>
+				<h4 class="method" id="method_datatypes">datatype($type, $db =
+					null)</h4>
+				<p>
+					The <strong>datatype</strong> method returns a normalized array
+					describing the SQL data type.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -885,8 +953,8 @@ DB::list_tables('%sessions%');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>/*
+							<td><pre class="php">
+									<code>/*
 Array
 (
     [type] => string
@@ -894,16 +962,20 @@ Array
 )
 */
 DB::datatype('char');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_count_records">count_records($table, $db = null)</h4>
-				<p>The <strong>count_records</strong> method returns the number of records in a table.</p>
+				<h4 class="method" id="method_count_records">count_records($table,
+					$db = null)</h4>
+				<p>
+					The <strong>count_records</strong> method returns the number of
+					records in a table.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -938,19 +1010,23 @@ DB::datatype('char');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// (int) 14
+							<td><pre class="php">
+									<code>// (int) 14
 DB::count_records('users');
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_count_last_query">count_last_query($db = null)</h4>
-				<p>The <strong>count_last_query</strong> method returns the number of records in the last query, without LIMIT or OFFSET applied.</p>
+				<h4 class="method" id="method_count_last_query">count_last_query($db
+					= null)</h4>
+				<p>
+					The <strong>count_last_query</strong> method returns the number of
+					records in the last query, without LIMIT or OFFSET applied.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -976,26 +1052,31 @@ DB::count_records('users');
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td>Returns the number of records in the last query, without LIMIT or OFFSET applied.</td>
+							<td>Returns the number of records in the last query, without
+								LIMIT or OFFSET applied.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// SELECT * FROM `users` WHERE `active` = "yes" LIMIT 10;
+							<td><pre class="php">
+									<code>// SELECT * FROM `users` WHERE `active` = "yes" LIMIT 10;
 $limited_result = DB::select()->from('users')->where('active', '=', 'yes')->limit(10)->execute();
 
 // SELECT count(*) as count FROM `users` WHERE `active` = "yes";
 DB::count_last_query();
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_set_charset">set_charset($charset, $db)</h4>
-				<p>The <strong>set_charset</strong> method sets the connection character set. This is called automatically by [static::connect].</p>
+				<h4 class="method" id="method_set_charset">set_charset($charset,
+					$db)</h4>
+				<p>
+					The <strong>set_charset</strong> method sets the connection
+					character set. This is called automatically by [static::connect].
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1030,9 +1111,9 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>DB::set_charset('utf8');</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>DB::set_charset('utf8');</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -1040,7 +1121,10 @@ DB::count_last_query();
 
 			<article>
 				<h4 class="method" id="method_error_info">error_info()</h4>
-				<p>The <strong>error_info</strong> returns an array with information about the last database error.</p>
+				<p>
+					The <strong>error_info</strong> returns an array with information
+					about the last database error.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1049,27 +1133,30 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Parameters</th>
-							<td>
-								None
-							</td>
+							<td>None</td>
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>array($unified_code, $platform_code, $error_text)</em></td>
+							<td><em>array($unified_code, $platform_code,
+									$error_text)</em></td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$lasterror = DB::error_info();</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>$lasterror = DB::error_info();</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_in_transaction">in_transaction($db = null)</h4>
-				<p>The <strong>in_transaction</strong> method checks whether a connection is in transaction.</p>
+				<h4 class="method" id="method_in_transaction">in_transaction($db
+					= null)</h4>
+				<p>
+					The <strong>in_transaction</strong> method checks whether a
+					connection is in transaction.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1097,21 +1184,26 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>bool</em> - only meaningful with PDO driver. If in the transaction return true. Otherwise return false.</td>
+							<td><em>bool</em> - only meaningful with PDO driver. If in
+								the transaction return true. Otherwise return false.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code class="php" >DB::in_transaction();</code></pre>
-							</td>
+							<td><pre class="php">
+									<code class="php">DB::in_transaction();</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_start_transaction">start_transaction($db = null)</h4>
-				<p>The <strong>start_transaction</strong> method begins a transaction on an instance.</p>
+				<h4 class="method" id="method_start_transaction">start_transaction($db
+					= null)</h4>
+				<p>
+					The <strong>start_transaction</strong> method begins a transaction
+					on an instance.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1137,22 +1229,27 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>bool</em> - only meaningful with PDO driver. All others always return true, but
-								throw an Exception when the SQL command fails.</td>
+							<td><em>bool</em> - only meaningful with PDO driver. All
+								others always return true, but throw an Exception when the SQL
+								command fails.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>DB::start_transaction();</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>DB::start_transaction();</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_commit_transaction">commit_transaction($db = null)</h4>
-				<p>The <strong>commit_transaction</strong> method commits all pending transactional queries.</p>
+				<h4 class="method" id="method_commit_transaction">commit_transaction($db
+					= null)</h4>
+				<p>
+					The <strong>commit_transaction</strong> method commits all pending
+					transactional queries.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1178,22 +1275,27 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>bool</em> - only meaningful with PDO driver. All others always return true, but
-								throw an Exception when the SQL command fails.</td>
+							<td><em>bool</em> - only meaningful with PDO driver. All
+								others always return true, but throw an Exception when the SQL
+								command fails.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>DB::commit_transaction();</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>DB::commit_transaction();</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_rollback_transaction">rollback_transaction($db = null)</h4>
-				<p>The <strong>rollback_transaction</strong> method rolls back all pending transactional queries.</p>
+				<h4 class="method" id="method_rollback_transaction">rollback_transaction($db
+					= null)</h4>
+				<p>
+					The <strong>rollback_transaction</strong> method rolls back all
+					pending transactional queries.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1219,14 +1321,15 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>Returns</th>
-							<td><em>bool</em> - only meaningful with PDO driver. All others always return true, but
-								throw an Exception when the SQL command fails.</td>
+							<td><em>bool</em> - only meaningful with PDO driver. All
+								others always return true, but throw an Exception when the SQL
+								command fails.</td>
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>DB::rollback_transaction();</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>DB::rollback_transaction();</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -1234,7 +1337,8 @@ DB::count_last_query();
 
 			<h3 id="transaction">Transaction example</h3>
 
-				<pre class="php"><code>// typical transaction code flow
+			<pre class="php">
+				<code>// typical transaction code flow
 try
 {
     DB::start_transaction();
@@ -1252,13 +1356,16 @@ catch (Exception $e)
 
     throw $e;
 }
-</code></pre>
+</code>
+			</pre>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

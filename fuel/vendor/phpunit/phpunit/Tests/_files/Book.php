@@ -45,15 +45,14 @@
 /**
  * A book.
  *
- * @package    PHPUnit
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.0
+ * @package PHPUnit
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.0
  */
-class Book
-{
-    // the order of properties is important for testing the cycle!
-    public $author = NULL;
+class Book {
+	// the order of properties is important for testing the cycle!
+	public $author = NULL;
 }

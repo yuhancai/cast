@@ -53,80 +53,83 @@ require_once __DIR__ . '/../Framework/Error/Deprecated.php';
 /**
  * Error handler that converts PHP errors and warnings to exceptions.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Util
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.3.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.3.0
  */
-class PHPUnit_Util_ErrorHandler
-{
-    protected static $errorStack = array();
+class PHPUnit_Util_ErrorHandler {
+	protected static $errorStack = array ();
+	
+	/**
+	 * Returns the error stack.
+	 *
+	 * @return array
+	 */
+	public static function getErrorStack() {
+		return self::$errorStack;
+	}
+	
+	/**
+	 *
+	 * @param integer $errno        	
+	 * @param string $errstr        	
+	 * @param string $errfile        	
+	 * @param integer $errline        	
+	 * @throws PHPUnit_Framework_Error
+	 */
+	public static function handleError($errno, $errstr, $errfile, $errline) {
+		if (! ($errno & error_reporting ())) {
+			return FALSE;
+		}
+		
+		self::$errorStack [] = array (
+				$errno,
+				$errstr,
+				$errfile,
+				$errline 
+		);
+		
+		$trace = debug_backtrace ( FALSE );
+		array_shift ( $trace );
+		
+		foreach ( $trace as $frame ) {
+			if ($frame ['function'] == '__toString') {
+				return FALSE;
+			}
+		}
+		
+		if ($errno == E_NOTICE || $errno == E_USER_NOTICE || $errno == E_STRICT) {
+			if (PHPUnit_Framework_Error_Notice::$enabled !== TRUE) {
+				return FALSE;
+			}
+			
+			$exception = 'PHPUnit_Framework_Error_Notice';
+		} 
 
-    /**
-     * Returns the error stack.
-     *
-     * @return array
-     */
-    public static function getErrorStack()
-    {
-        return self::$errorStack;
-    }
+		else if ($errno == E_WARNING || $errno == E_USER_WARNING) {
+			if (PHPUnit_Framework_Error_Warning::$enabled !== TRUE) {
+				return FALSE;
+			}
+			
+			$exception = 'PHPUnit_Framework_Error_Warning';
+		} 
 
-    /**
-     * @param  integer $errno
-     * @param  string  $errstr
-     * @param  string  $errfile
-     * @param  integer $errline
-     * @throws PHPUnit_Framework_Error
-     */
-    public static function handleError($errno, $errstr, $errfile, $errline)
-    {
-        if (!($errno & error_reporting())) {
-            return FALSE;
-        }
+		else if ($errno == E_DEPRECATED || $errno == E_USER_DEPRECATED) {
+			if (PHPUnit_Framework_Error_Deprecated::$enabled !== TRUE) {
+				return FALSE;
+			}
+			
+			$exception = 'PHPUnit_Framework_Error_Deprecated';
+		} 
 
-        self::$errorStack[] = array($errno, $errstr, $errfile, $errline);
-
-        $trace = debug_backtrace(FALSE);
-        array_shift($trace);
-
-        foreach ($trace as $frame) {
-            if ($frame['function'] == '__toString') {
-                return FALSE;
-            }
-        }
-
-        if ($errno == E_NOTICE || $errno == E_USER_NOTICE || $errno == E_STRICT) {
-            if (PHPUnit_Framework_Error_Notice::$enabled !== TRUE) {
-                return FALSE;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Notice';
-        }
-
-        else if ($errno == E_WARNING || $errno == E_USER_WARNING) {
-            if (PHPUnit_Framework_Error_Warning::$enabled !== TRUE) {
-                return FALSE;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Warning';
-        }
-
-        else if ($errno == E_DEPRECATED || $errno == E_USER_DEPRECATED) {
-            if (PHPUnit_Framework_Error_Deprecated::$enabled !== TRUE) {
-                return FALSE;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Deprecated';
-        }
-
-        else {
-            $exception = 'PHPUnit_Framework_Error';
-        }
-
-        throw new $exception($errstr, $errno, $errfile, $errline);
-    }
+		else {
+			$exception = 'PHPUnit_Framework_Error';
+		}
+		
+		throw new $exception ( $errstr, $errno, $errfile, $errline );
+	}
 }

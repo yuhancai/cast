@@ -9,9 +9,7 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
-
-return array(
-	'hello' => 'Hello there :name!'
+return array (
+		'hello' => 'Hello there :name!' 
 );
 

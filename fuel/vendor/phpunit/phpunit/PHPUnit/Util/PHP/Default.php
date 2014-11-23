@@ -46,22 +46,21 @@
 /**
  * Default utility for PHP sub-processes.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Util
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.5.12
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.5.12
  */
-class PHPUnit_Util_PHP_Default extends PHPUnit_Util_PHP
-{
-    /**
-     * @param resource $pipe
-     * @since Method available since Release 3.5.12
-     */
-    protected function process($pipe, $job)
-    {
-        fwrite($pipe, $job);
-    }
+class PHPUnit_Util_PHP_Default extends PHPUnit_Util_PHP {
+	/**
+	 *
+	 * @param resource $pipe        	
+	 * @since Method available since Release 3.5.12
+	 */
+	protected function process($pipe, $job) {
+		fwrite ( $pipe, $job );
+	}
 }

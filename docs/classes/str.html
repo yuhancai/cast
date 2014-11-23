@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../assets/css/combined.css">
+<link rel="shortcut icon" href="./../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../';
 		var class_prefix = "Str::";
 	</script>
-	<script src="./../assets/js/combined.js"></script>
-	<title>Str - Classes - FuelPHP Documentation</title>
+<script src="./../assets/js/combined.js"></script>
+<title>Str - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -47,11 +46,17 @@
 
 			<h2>Str Class</h2>
 
-			<p>The str class is a set of methods to help with the manipulation of strings.</p>
+			<p>The str class is a set of methods to help with the
+				manipulation of strings.</p>
 
 			<article>
-				<h4 class="method" id="method_increment">increment($str, $first = 1)</h4>
-				<p>The <strong>increment</strong> method allows you to append a number to the end of a string or increment that number if it already exists.</p>
+				<h4 class="method" id="method_increment">increment($str, $first
+					= 1)</h4>
+				<p>
+					The <strong>increment</strong> method allows you to append a number
+					to the end of a string or increment that number if it already
+					exists.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -74,7 +79,9 @@
 									</tr>
 									<tr>
 										<th><kbd>$first</kbd></th>
-										<td><pre class="php"><code>1</code></pre></td>
+										<td><pre class="php">
+												<code>1</code>
+											</pre></td>
 										<td>The first number to increment with.</td>
 									</tr>
 								</table>
@@ -86,8 +93,8 @@
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$string = "filename";
+							<td><pre class="php">
+									<code>$string = "filename";
 Str::increment($string); // returns filename_1
 
 $string = "filename_1";
@@ -95,16 +102,20 @@ Str::increment($string); // returns filename_2
 
 $string = "filename";
 Str::increment($string, 3); // returns filename_3
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_random">random($type = 'alnum', $length = 8)</h4>
-				<p>The <strong>random</strong> method generates a random string based on the type given.</p>
+				<h4 class="method" id="method_random">random($type = 'alnum',
+					$length = 8)</h4>
+				<p>
+					The <strong>random</strong> method generates a random string based
+					on the type given.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -123,12 +134,17 @@ Str::increment($string, 3); // returns filename_3
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>alnum</em></td>
-										<td>The type of string to generate. Your choices are alnum, numeric, nozero, alpha, distinct, hexdec, unique, sha1 and uuid.</td>
+										<td>The type of string to generate. Your choices are
+											alnum, numeric, nozero, alpha, distinct, hexdec, unique, sha1
+											and uuid.</td>
 									</tr>
 									<tr>
 										<th><kbd>$length</kbd></th>
-										<td><pre class="php"><code>16</code></pre></td>
-										<td>The number of characters you would like the final string to be (unique, sha1 and uuid ignore this parameter).</td>
+										<td><pre class="php">
+												<code>16</code>
+											</pre></td>
+										<td>The number of characters you would like the final
+											string to be (unique, sha1 and uuid ignore this parameter).</td>
 									</tr>
 								</table>
 							</td>
@@ -139,8 +155,8 @@ Str::increment($string, 3); // returns filename_3
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// alnum (uppercase and lowercase letters mixed with numbers)
+							<td><pre class="php">
+									<code>// alnum (uppercase and lowercase letters mixed with numbers)
 Str::random('alnum', 16);
 // Returns: SvZi9Dh3lq7zQYim
 
@@ -174,16 +190,20 @@ Str::random('sha1');
 
 // uuid (version 4 - random)
 Str::random('uuid');
-// Returns: f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre>
-							</td>
+// Returns: f47ac10b-58cc-4372-a567-0e02b2c3d479</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_truncate">truncate($string, $limit, $continuation = '...', $is_html = false)</h4>
-				<p>The <strong>truncate</strong> method allows you to limit characters and provide a continuation string without breaking html.</p>
+				<h4 class="method" id="method_truncate">truncate($string,
+					$limit, $continuation = '...', $is_html = false)</h4>
+				<p>
+					The <strong>truncate</strong> method allows you to limit characters
+					and provide a continuation string without breaking html.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -211,13 +231,19 @@ Str::random('uuid');
 									</tr>
 									<tr>
 										<th><kbd>$continuation</kbd></th>
-										<td><pre class="php"><code>'...'</code></pre></td>
-										<td>The string to append to the end of the truncated string.</td>
+										<td><pre class="php">
+												<code>'...'</code>
+											</pre></td>
+										<td>The string to append to the end of the truncated
+											string.</td>
 									</tr>
 									<tr>
 										<th><kbd>$is_html</kbd></th>
-										<td><pre class="php"><code>false</code></pre></td>
-										<td>If the string contains html. Setting this as true will make the method not break html.</td>
+										<td><pre class="php">
+												<code>false</code>
+											</pre></td>
+										<td>If the string contains html. Setting this as true
+											will make the method not break html.</td>
 									</tr>
 								</table>
 							</td>
@@ -228,14 +254,14 @@ Str::random('uuid');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+							<td><pre class="php">
+									<code>$string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 Str::truncate($string, 15); // returns Lorem ipsum dol...
 
 $string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 Str::truncate($string, 15, '...Read More'); // returns Lorem ipsum dol...Read More
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -243,9 +269,13 @@ Str::truncate($string, 15, '...Read More'); // returns Lorem ipsum dol...Read Mo
 
 			<article>
 				<h4 class="method" id="method_alternator">alternator(*$args)</h4>
-				<p>Returns a closure that will alternate the values you've passed to this method as arguments, unless you
-					call the closure with <kbd>false</kbd> as argument - in which case it will just return the value
-					without moving to the next and return the same value on the next call.</p>
+				<p>
+					Returns a closure that will alternate the values you've passed to
+					this method as arguments, unless you call the closure with
+					<kbd>false</kbd>
+					as argument - in which case it will just return the value without
+					moving to the next and return the same value on the next call.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -275,24 +305,29 @@ Str::truncate($string, 15, '...Read More'); // returns Lorem ipsum dol...Read Mo
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$alt = Str::alternator('one', 'two', 'three', 'four');
+							<td><pre class="php">
+									<code>$alt = Str::alternator('one', 'two', 'three', 'four');
 echo $alt(); // outputs 'one'
 echo $alt(); // outputs 'two'
 echo $alt(false); // outputs 'three', but doens't move to the next as you can see in the next call
 echo $alt(); // outputs 'three'
 echo $alt(); // outputs 'four'
 echo $alt(); // outputs 'one'
-// etc...</code></pre>
-							</td>
+// etc...</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_upper">upper($str, $encoding = null)</h4>
-				<p>The <strong>upper</strong> method converts all characters to uppercase. It is equivalent to PHP's strtoupper() for your specific character encoding.</p>
+				<h4 class="method" id="method_upper">upper($str, $encoding =
+					null)</h4>
+				<p>
+					The <strong>upper</strong> method converts all characters to
+					uppercase. It is equivalent to PHP's strtoupper() for your specific
+					character encoding.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -318,7 +353,9 @@ echo $alt(); // outputs 'one'
 									<tr>
 										<th><kbd>$encoding</kbd></th>
 										<td><em>string</em></td>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td>The character encoding.</td>
 									</tr>
 								</table>
@@ -330,17 +367,22 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::upper('User Data'); // returns 'USER DATA'</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::upper('User Data'); // returns 'USER DATA'</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_lower">lower($str, $encoding = null)</h4>
-				<p>The <strong>lower</strong> method converts all characters to lowercase. It is equivalent to PHP's strtolower() for your specific character encoding.</p>
+				<h4 class="method" id="method_lower">lower($str, $encoding =
+					null)</h4>
+				<p>
+					The <strong>lower</strong> method converts all characters to
+					lowercase. It is equivalent to PHP's strtolower() for your specific
+					character encoding.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -366,7 +408,9 @@ echo $alt(); // outputs 'one'
 									<tr>
 										<th><kbd>$encoding</kbd></th>
 										<td><em>string</em></td>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td>The character encoding.</td>
 									</tr>
 								</table>
@@ -378,9 +422,9 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::lower('User Data'); // returns 'user data'</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::lower('User Data'); // returns 'user data'</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -388,7 +432,10 @@ echo $alt(); // outputs 'one'
 
 			<article>
 				<h4 class="method" id="method_tr">tr($string, $array = array())</h4>
-				<p>The <strong>tr</strong> method parse the params from given string using PHP's strtr().</p>
+				<p>
+					The <strong>tr</strong> method parse the params from given string
+					using PHP's strtr().
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -414,7 +461,9 @@ echo $alt(); // outputs 'one'
 									<tr>
 										<th><kbd>$array</kbd></th>
 										<td><em>array</em></td>
-										<td><pre class="php"><code>array()</code></pre></td>
+										<td><pre class="php">
+												<code>array()</code>
+											</pre></td>
 										<td>params to str_replace.</td>
 									</tr>
 								</table>
@@ -426,9 +475,9 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::tr('Hello :name', array('name' => 'World')); // returns 'Hello World'</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::tr('Hello :name', array('name' => 'World')); // returns 'Hello World'</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -436,7 +485,10 @@ echo $alt(); // outputs 'one'
 
 			<article>
 				<h4 class="method" id="method_is_json">is_json($string)</h4>
-				<p>The <strong>is_json</strong> method check if a string is json encoded.</p>
+				<p>
+					The <strong>is_json</strong> method check if a string is json
+					encoded.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -468,9 +520,9 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::is_json('{"0":"An","encoded":["string"]}'); // returns true</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::is_json('{"0":"An","encoded":["string"]}'); // returns true</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -478,7 +530,10 @@ echo $alt(); // outputs 'one'
 
 			<article>
 				<h4 class="method" id="method_is_serialized">is_serialized($string)</h4>
-				<p>The <strong>is_serialized</strong> method check if a string is serialized.</p>
+				<p>
+					The <strong>is_serialized</strong> method check if a string is
+					serialized.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -510,10 +565,10 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::is_serialized('a:2:{i:0;s:2:"An";s:7:"encoded";a:1:{i:0;s:6:"string";}}');
-// returns true</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::is_serialized('a:2:{i:0;s:2:"An";s:7:"encoded";a:1:{i:0;s:6:"string";}}');
+// returns true</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -521,7 +576,9 @@ echo $alt(); // outputs 'one'
 
 			<article>
 				<h4 class="method" id="method_is_html">is_html($string)</h4>
-				<p>The <strong>is_html</strong> method check if a string is html.</p>
+				<p>
+					The <strong>is_html</strong> method check if a string is html.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -553,10 +610,10 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::is_html('Lorem ipsum &lt;b>dolor sit amet&lt;/b>, consectetur &lt;u>adipiscing&lt;/u> elit.');
-// returns true</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::is_html('Lorem ipsum &lt;b>dolor sit amet&lt;/b>, consectetur &lt;u>adipiscing&lt;/u> elit.');
+// returns true</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -564,7 +621,12 @@ echo $alt(); // outputs 'one'
 
 			<article>
 				<h4 class="method" id="method_is_xml">is_xml($string)</h4>
-				<p>The <strong>is_xml</strong> method check if a string is a valid xml. Requires the <a href="http://www.php.net/manual/en/ref.libxml.php" target="_blank">libxml extension</a>.</p>
+				<p>
+					The <strong>is_xml</strong> method check if a string is a valid
+					xml. Requires the <a
+						href="http://www.php.net/manual/en/ref.libxml.php" target="_blank">libxml
+						extension</a>.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -596,18 +658,22 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::is_xml('&lt;?xml version="1.0" encoding="utf-8"?>&lt;xml>&lt;foo>bar&lt;/foo>&lt;/xml>');
-// returns true</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::is_xml('&lt;?xml version="1.0" encoding="utf-8"?>&lt;xml>&lt;foo>bar&lt;/foo>&lt;/xml>');
+// returns true</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_starts_with">starts_with($str, $start, $ignore_case = false)</h4>
-				<p>The <strong>starts_with</strong> method checks whether a string has a precific beginning.</p>
+				<h4 class="method" id="method_starts_with">starts_with($str,
+					$start, $ignore_case = false)</h4>
+				<p>
+					The <strong>starts_with</strong> method checks whether a string has
+					a precific beginning.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -635,7 +701,9 @@ echo $alt(); // outputs 'one'
 									</tr>
 									<tr>
 										<th><kbd>$ignore_case</kbd></th>
-										<td><pre class="php"><code>false</code></pre></td>
+										<td><pre class="php">
+												<code>false</code>
+											</pre></td>
 										<td>Whether to ignore the case.</td>
 									</tr>
 								</table>
@@ -647,22 +715,26 @@ echo $alt(); // outputs 'one'
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet";
+							<td><pre class="php">
+									<code>$string = "Lorem ipsum dolor sit amet";
 
 Str::starts_with($string, 'Lorem'); // returns true
 Str::starts_with($string, 'lorem'); // returns false
 Str::starts_with($string, 'lorem', true); // returns true
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_ends_with">ends_with($str, $end, $ignore_case = false)</h4>
-				<p>The <strong>ends_with</strong> method checks whether or not a string has a precific ending.</p>
+				<h4 class="method" id="method_ends_with">ends_with($str, $end,
+					$ignore_case = false)</h4>
+				<p>
+					The <strong>ends_with</strong> method checks whether or not a
+					string has a precific ending.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -690,7 +762,9 @@ Str::starts_with($string, 'lorem', true); // returns true
 									</tr>
 									<tr>
 										<th><kbd>$ignore_case</kbd></th>
-										<td><pre class="php"><code>false</code></pre></td>
+										<td><pre class="php">
+												<code>false</code>
+											</pre></td>
 										<td>Whether to ignore the case.</td>
 									</tr>
 								</table>
@@ -702,22 +776,27 @@ Str::starts_with($string, 'lorem', true); // returns true
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet";
+							<td><pre class="php">
+									<code>$string = "Lorem ipsum dolor sit amet";
 
 Str::ends_with($string, 'amet'); // returns true
 Str::ends_with($string, 'Amet'); // returns false
 Str::ends_with($string, 'Amet', true); // returns true
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
 			</article>
 
 			<article>
-				<h4 class="method" id="method_sub">sub($str, $start, $length = null, $encoding = null)</h4>
-				<p>The <strong>sub</strong> method returns the portion of the string specified. It is equivalent to PHP's substr() for your specific character encoding.</p>
+				<h4 class="method" id="method_sub">sub($str, $start, $length =
+					null, $encoding = null)</h4>
+				<p>
+					The <strong>sub</strong> method returns the portion of the string
+					specified. It is equivalent to PHP's substr() for your specific
+					character encoding.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -741,16 +820,26 @@ Str::ends_with($string, 'Amet', true); // returns true
 									<tr>
 										<th><kbd>$start</kbd></th>
 										<td><em>required</em></td>
-										<td>Position of first character. See <a href="http://php.net/substr" target="_blank">php.net</a> for detailed usage.</td>
+										<td>Position of first character. See <a
+											href="http://php.net/substr" target="_blank">php.net</a> for
+											detailed usage.
+										</td>
 									</tr>
 									<tr>
 										<th><kbd>$length</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
-										<td>Maximum number of characters. See <a href="http://php.net/substr" target="_blank">php.net</a> for detailed usage.</td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
+										<td>Maximum number of characters. See <a
+											href="http://php.net/substr" target="_blank">php.net</a> for
+											detailed usage.
+										</td>
 									</tr>
 									<tr>
 										<th><kbd>$encoding</kbd></th>
-										<td><pre class="php"><code>null</code></pre></td>
+										<td><pre class="php">
+												<code>null</code>
+											</pre></td>
 										<td>The character encoding.</td>
 									</tr>
 								</table>
@@ -762,9 +851,9 @@ Str::ends_with($string, 'Amet', true); // returns true
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>Str::sub('User Data', 3, -1); // returns 'r Dat'</code></pre>
-							</td>
+							<td><pre class="php">
+									<code>Str::sub('User Data', 3, -1); // returns 'r Dat'</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -774,7 +863,9 @@ Str::ends_with($string, 'Amet', true); // returns true
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

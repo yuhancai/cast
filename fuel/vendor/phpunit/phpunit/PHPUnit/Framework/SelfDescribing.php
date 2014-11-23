@@ -46,20 +46,19 @@
 /**
  * Interface for classes that can return a description of itself.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Interface available since Release 3.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Interface available since Release 3.0.0
  */
-interface PHPUnit_Framework_SelfDescribing
-{
-    /**
-     * Returns a string representation of the object.
-     *
-     * @return string
-     */
-    public function toString();
+interface PHPUnit_Framework_SelfDescribing {
+	/**
+	 * Returns a string representation of the object.
+	 *
+	 * @return string
+	 */
+	public function toString();
 }

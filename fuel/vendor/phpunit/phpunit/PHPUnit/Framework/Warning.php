@@ -46,80 +46,84 @@
 /**
  * A warning.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.0.0
  */
-class PHPUnit_Framework_Warning extends PHPUnit_Framework_TestCase
-{
-    /**
-     * @var string
-     */
-    protected $message = '';
-
-    /**
-     * @var boolean
-     */
-    protected $backupGlobals = FALSE;
-
-    /**
-     * @var boolean
-     */
-    protected $backupStaticAttributes = FALSE;
-
-    /**
-     * @var boolean
-     */
-    protected $runTestInSeparateProcess = FALSE;
-
-    /**
-     * @var boolean
-     */
-    protected $useErrorHandler = FALSE;
-
-    /**
-     * @var boolean
-     */
-    protected $useOutputBuffering = FALSE;
-
-    /**
-     * @param string $message
-     */
-    public function __construct($message = '')
-    {
-        $this->message = $message;
-        parent::__construct('Warning');
-    }
-
-    /**
-     * @throws PHPUnit_Framework_Exception
-     */
-    protected function runTest()
-    {
-        $this->fail($this->message);
-    }
-
-    /**
-     * @return string
-     * @since  Method available since Release 3.0.0
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
-     * Returns a string representation of the test case.
-     *
-     * @return string
-     * @since  Method available since Release 3.4.0
-     */
-    public function toString()
-    {
-        return 'Warning';
-    }
+class PHPUnit_Framework_Warning extends PHPUnit_Framework_TestCase {
+	/**
+	 *
+	 * @var string
+	 */
+	protected $message = '';
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $backupGlobals = FALSE;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $backupStaticAttributes = FALSE;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $runTestInSeparateProcess = FALSE;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $useErrorHandler = FALSE;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $useOutputBuffering = FALSE;
+	
+	/**
+	 *
+	 * @param string $message        	
+	 */
+	public function __construct($message = '') {
+		$this->message = $message;
+		parent::__construct ( 'Warning' );
+	}
+	
+	/**
+	 *
+	 * @throws PHPUnit_Framework_Exception
+	 */
+	protected function runTest() {
+		$this->fail ( $this->message );
+	}
+	
+	/**
+	 *
+	 * @return string
+	 * @since Method available since Release 3.0.0
+	 */
+	public function getMessage() {
+		return $this->message;
+	}
+	
+	/**
+	 * Returns a string representation of the test case.
+	 *
+	 * @return string
+	 * @since Method available since Release 3.4.0
+	 */
+	public function toString() {
+		return 'Warning';
+	}
 }

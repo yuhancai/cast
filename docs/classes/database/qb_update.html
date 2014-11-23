@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 		var class_prefix = 'Query_Builder_Update::';
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>Query Builder Update - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>Query Builder Update - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -47,16 +46,19 @@
 
 			<h2 id="introduction">Query_Builder_Update class</h2>
 
-			<p>(extends <a href="qb_where.html">Query_Builder_Where</a>)</p>
-
 			<p>
-				The Query_Builder_Update class handles all the update operations for the query building process. It extends the
-				Query_Builder_Where class, so all the methods are inherited.
+				(extends <a href="qb_where.html">Query_Builder_Where</a>)
 			</p>
+
+			<p>The Query_Builder_Update class handles all the update
+				operations for the query building process. It extends the
+				Query_Builder_Where class, so all the methods are inherited.</p>
 
 			<article>
 				<h4 class="method" id="method_table">table($table)</h4>
-				<p>The <strong>table</strong> method sets/changes the table to update.</p>
+				<p>
+					The <strong>table</strong> method sets/changes the table to update.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -88,16 +90,16 @@
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an update statement
+							<td><pre class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Set the table to update
 $query->table('admins');
 
 // UPDATE `admins` ...
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -106,7 +108,10 @@ $query->table('admins');
 
 			<article>
 				<h4 class="method" id="method_value">value($column, $value)</h4>
-				<p>The <strong>value</strong> method sets a column and value to update.</p>
+				<p>
+					The <strong>value</strong> method sets a column and value to
+					update.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -144,16 +149,16 @@ $query->table('admins');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an update statement
+							<td><pre class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Set the columns
 $query->value('name', 'Frank');
 
 // UPDATE `users` SET `name` = "Frank"
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -161,7 +166,10 @@ $query->value('name', 'Frank');
 
 			<article>
 				<h4 class="method" id="method_set">set(array $pairs)</h4>
-				<p>The <strong>set</strong> method sets the columns and values to update.</p>
+				<p>
+					The <strong>set</strong> method sets the columns and values to
+					update.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -193,8 +201,8 @@ $query->value('name', 'Frank');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an update statement
+							<td><pre class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Set the columns and vales
@@ -204,8 +212,8 @@ $query->set(array(
 ));
 
 // UPDATE `users` SET `name` = "John", `surname` = "Doe"
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -213,7 +221,10 @@ $query->set(array(
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p>The <strong>compile</strong> method returns the update SQL query as a string.</p>
+				<p>
+					The <strong>compile</strong> method returns the update SQL query as
+					a string.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -245,8 +256,8 @@ $query->set(array(
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an update statement
+							<td><pre class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Set two values
@@ -260,8 +271,8 @@ $connection = Database_Connection::instance();
 
 // Get the sql query
 $sql = $query->compile($connection);
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -269,7 +280,10 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_reset">reset()</h4>
-				<p>The <strong>reset</strong> method resets all values of the current instance.</p>
+				<p>
+					The <strong>reset</strong> method resets all values of the current
+					instance.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -278,9 +292,7 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Parameters</th>
-							<td>
-								<em>None</em>
-							</td>
+							<td><em>None</em></td>
 						</tr>
 						<tr>
 							<th>Returns</th>
@@ -288,8 +300,8 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an update statement
+							<td><pre class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Set two values
@@ -311,8 +323,8 @@ $connection = Database_Connection::instance();
 $sql = $query->compile($connection);
 
 // UPDATE `users` SET `name` = "Hank"
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -320,7 +332,9 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_join">join($table, $type = null)</h4>
-				<p>The <strong>join</strong> method appends tables to join.</p>
+				<p>
+					The <strong>join</strong> method appends tables to join.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -346,7 +360,9 @@ $sql = $query->compile($connection);
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>mixed</em></td>
-										<td><pre class="php"><code>true</code></pre></td>
+										<td><pre class="php">
+												<code>true</code>
+											</pre></td>
 										<td>join type (LEFT, RIGHT, INNER, etc)</td>
 									</tr>
 								</table>
@@ -358,9 +374,7 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<a href="#join_example">View example here</a>
-							</td>
+							<td><a href="#join_example">View example here</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -368,7 +382,10 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_on">on($c1, $op, $c2)</h4>
-				<p>The <strong>on</strong> method adds "ON ..." conditions for the last created JOIN statement.</p>
+				<p>
+					The <strong>on</strong> method adds "ON ..." conditions for the
+					last created JOIN statement.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -412,8 +429,8 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre id="join_example" class="php"><code>// prepare an update statement
+							<td><pre id="join_example" class="php">
+									<code>// prepare an update statement
 $query = DB::update('users');
 
 // Join a table
@@ -424,8 +441,8 @@ $query->on('users.id', '=', 'profiles.user_id');
 $query->value('users.profile_type', \DB::expr('`profiles`.`type`'));
 
 // UPDATE `users` JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` SET `users`.`profile_type` = `profiles`.`type`
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -435,7 +452,9 @@ $query->value('users.profile_type', \DB::expr('`profiles`.`type`'));
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

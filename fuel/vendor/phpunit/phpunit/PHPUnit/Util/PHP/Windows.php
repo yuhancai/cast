@@ -46,45 +46,39 @@
 /**
  * Windows utility for PHP sub-processes.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Util
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.5.12
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.5.12
  */
-class PHPUnit_Util_PHP_Windows extends PHPUnit_Util_PHP
-{
-    /**
-     * @var string
-     */
-    protected $tempFile;
-
-    /**
-     * @param resource $pipe
-     * @since Method available since Release 3.5.12
-     */
-    protected function process($pipe, $job)
-    {
-        if (!($this->tempFile = tempnam(sys_get_temp_dir(), 'PHPUnit')) ||
-            file_put_contents($this->tempFile, $job) === FALSE) {
-            throw new PHPUnit_Framework_Exception(
-              'Unable to write temporary files for process isolation.'
-            );
-        }
-
-        fwrite(
-          $pipe,
-          "<?php require_once " . var_export($this->tempFile, TRUE) .  "; ?>"
-        );
-    }
-
-    /**
-     * @since Method available since Release 3.5.12
-     */
-    protected function cleanup()
-    {
-        unlink($this->tempFile);
-    }
+class PHPUnit_Util_PHP_Windows extends PHPUnit_Util_PHP {
+	/**
+	 *
+	 * @var string
+	 */
+	protected $tempFile;
+	
+	/**
+	 *
+	 * @param resource $pipe        	
+	 * @since Method available since Release 3.5.12
+	 */
+	protected function process($pipe, $job) {
+		if (! ($this->tempFile = tempnam ( sys_get_temp_dir (), 'PHPUnit' )) || file_put_contents ( $this->tempFile, $job ) === FALSE) {
+			throw new PHPUnit_Framework_Exception ( 'Unable to write temporary files for process isolation.' );
+		}
+		
+		fwrite ( $pipe, "<?php require_once " . var_export ( $this->tempFile, TRUE ) . "; ?>" );
+	}
+	
+	/**
+	 *
+	 * @since Method available since Release 3.5.12
+	 */
+	protected function cleanup() {
+		unlink ( $this->tempFile );
+	}
 }

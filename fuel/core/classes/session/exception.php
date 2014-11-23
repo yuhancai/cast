@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Part of the Fuel framework.
  *
@@ -9,7 +10,7 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Core;
 
-class Session_Exception extends \FuelException {}
+class Session_Exception extends \FuelException {
+}

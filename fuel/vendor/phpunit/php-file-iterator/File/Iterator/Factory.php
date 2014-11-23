@@ -46,75 +46,70 @@
  * an AppendIterator that contains an RecursiveDirectoryIterator for each given
  * path.
  *
- * @author    Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
  * @copyright 2009-2013 Sebastian Bergmann <sebastian@phpunit.de>
- * @license   http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @version   Release: @package_version@
- * @link      http://github.com/sebastianbergmann/php-file-iterator/tree
- * @since     Class available since Release 1.1.0
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @version Release: @package_version@
+ * @link http://github.com/sebastianbergmann/php-file-iterator/tree
+ * @since Class available since Release 1.1.0
  */
-class File_Iterator_Factory
-{
-    /**
-     * @param  array|string $paths
-     * @param  array|string $suffixes
-     * @param  array|string $prefixes
-     * @param  array        $exclude
-     * @return AppendIterator
-     */
-    public function getFileIterator($paths, $suffixes = '', $prefixes = '', array $exclude = array())
-    {
-        if (is_string($paths)) {
-            $paths = array($paths);
-        }
-
-        $_paths = array();
-
-        foreach ($paths as $path) {
-            if ($locals = glob($path, GLOB_ONLYDIR)) {
-                $_paths = array_merge($_paths, $locals);
-            } else {
-                $_paths[] = $path;
-            }
-        }
-
-        $paths = $_paths;
-        unset($_paths);
-
-        if (is_string($prefixes)) {
-            if ($prefixes != '') {
-                $prefixes = array($prefixes);
-            } else {
-                $prefixes = array();
-            }
-        }
-
-        if (is_string($suffixes)) {
-            if ($suffixes != '') {
-                $suffixes = array($suffixes);
-            } else {
-                $suffixes = array();
-            }
-        }
-
-        $iterator = new AppendIterator;
-
-        foreach ($paths as $path) {
-            if (is_dir($path)) {
-                $iterator->append(
-                  new File_Iterator(
-                    new RecursiveIteratorIterator(
-                      new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::FOLLOW_SYMLINKS)
-                    ),
-                    $suffixes,
-                    $prefixes,
-                    $exclude,
-                    $path
-                  )
-                );
-            }
-        }
-
-        return $iterator;
-    }
+class File_Iterator_Factory {
+	/**
+	 *
+	 * @param array|string $paths        	
+	 * @param array|string $suffixes        	
+	 * @param array|string $prefixes        	
+	 * @param array $exclude        	
+	 * @return AppendIterator
+	 */
+	public function getFileIterator($paths, $suffixes = '', $prefixes = '', array $exclude = array()) {
+		if (is_string ( $paths )) {
+			$paths = array (
+					$paths 
+			);
+		}
+		
+		$_paths = array ();
+		
+		foreach ( $paths as $path ) {
+			if ($locals = glob ( $path, GLOB_ONLYDIR )) {
+				$_paths = array_merge ( $_paths, $locals );
+			} else {
+				$_paths [] = $path;
+			}
+		}
+		
+		$paths = $_paths;
+		unset ( $_paths );
+		
+		if (is_string ( $prefixes )) {
+			if ($prefixes != '') {
+				$prefixes = array (
+						$prefixes 
+				);
+			} else {
+				$prefixes = array ();
+			}
+		}
+		
+		if (is_string ( $suffixes )) {
+			if ($suffixes != '') {
+				$suffixes = array (
+						$suffixes 
+				);
+			} else {
+				$suffixes = array ();
+			}
+		}
+		
+		$iterator = new AppendIterator ();
+		
+		foreach ( $paths as $path ) {
+			if (is_dir ( $path )) {
+				$iterator->append ( new File_Iterator ( new RecursiveIteratorIterator ( new RecursiveDirectoryIterator ( $path, RecursiveDirectoryIterator::FOLLOW_SYMLINKS ) ), $suffixes, $prefixes, $exclude, $path ) );
+			}
+		}
+		
+		return $iterator;
+	}
 }

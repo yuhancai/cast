@@ -53,70 +53,69 @@
  *
  * The sub-string is passed in the constructor.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Constraint
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.0.0
  */
-class PHPUnit_Framework_Constraint_StringContains extends PHPUnit_Framework_Constraint
-{
-    /**
-     * @var string
-     */
-    protected $string;
+class PHPUnit_Framework_Constraint_StringContains extends PHPUnit_Framework_Constraint {
+	/**
+	 *
+	 * @var string
+	 */
+	protected $string;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $ignoreCase;
+	
+	/**
+	 *
+	 * @param string $string        	
+	 * @param boolean $ignoreCase        	
+	 */
+	public function __construct($string, $ignoreCase = FALSE) {
+		$this->string = $string;
+		$this->ignoreCase = $ignoreCase;
+	}
+	
+	/**
+	 * Evaluates the constraint for parameter $other.
+	 * Returns TRUE if the
+	 * constraint is met, FALSE otherwise.
+	 *
+	 * @param mixed $other
+	 *        	Value or object to evaluate.
+	 * @return bool
+	 */
+	protected function matches($other) {
+		if ($this->ignoreCase) {
+			return stripos ( $other, $this->string ) !== FALSE;
+		} else {
+			return strpos ( $other, $this->string ) !== FALSE;
+		}
+	}
+	
+	/**
+	 * Returns a string representation of the constraint.
+	 *
+	 * @return string
+	 */
+	public function toString() {
+		if ($this->ignoreCase) {
+			$string = strtolower ( $this->string );
+		} else {
+			$string = $this->string;
+		}
+		
+		return sprintf ( 'contains "%s"', 
 
-    /**
-     * @var boolean
-     */
-    protected $ignoreCase;
-
-    /**
-     * @param string  $string
-     * @param boolean $ignoreCase
-     */
-    public function __construct($string, $ignoreCase = FALSE)
-    {
-        $this->string     = $string;
-        $this->ignoreCase = $ignoreCase;
-    }
-
-    /**
-     * Evaluates the constraint for parameter $other. Returns TRUE if the
-     * constraint is met, FALSE otherwise.
-     *
-     * @param mixed $other Value or object to evaluate.
-     * @return bool
-     */
-    protected function matches($other)
-    {
-        if ($this->ignoreCase) {
-            return stripos($other, $this->string) !== FALSE;
-        } else {
-            return strpos($other, $this->string) !== FALSE;
-        }
-    }
-
-    /**
-     * Returns a string representation of the constraint.
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        if ($this->ignoreCase) {
-            $string = strtolower($this->string);
-        } else {
-            $string = $this->string;
-        }
-
-        return sprintf(
-          'contains "%s"',
-
-          $string
-        );
-    }
+		$string );
+	}
 }

@@ -41,40 +41,31 @@
  * @link       http://www.phpunit.de/
  * @since      File available since Release 3.7.20
  */
-
-require_once dirname(dirname(dirname(__DIR__))) . '/PHPUnit/Framework/Assert/Functions.php';
+require_once dirname ( dirname ( dirname ( __DIR__ ) ) ) . '/PHPUnit/Framework/Assert/Functions.php';
 
 /**
  *
- *
- * @package    PHPUnit
- * @author     Kuzuha SHINODA <kuzuha01@hotmail.com>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      File available since Release 3.7.20
+ * @package PHPUnit
+ * @author Kuzuha SHINODA <kuzuha01@hotmail.com>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since File available since Release 3.7.20
  */
-class Framework_Assert_FunctionsTest extends PHPUnit_Framework_TestCase
-{
-
-    public function testLogicalAnd()
-    {
-        $expected = $this->logicalAnd($this->isTrue(), $this->isFalse());
-        $actual = logicalAnd($this->isTrue(), $this->isFalse());
-        $this->assertSame($expected->toString(), $actual->toString());
-    }
-
-    public function testLogicalOr()
-    {
-        $expected = $this->logicalOr($this->isTrue(), $this->isFalse());
-        $actual = logicalOr($this->isTrue(), $this->isFalse());
-        $this->assertSame($expected->toString(), $actual->toString());
-    }
-
-    public function testLogicalXor()
-    {
-        $expected = $this->logicalXor($this->isTrue(), $this->isFalse());
-        $actual = logicalXor($this->isTrue(), $this->isFalse());
-        $this->assertSame($expected->toString(), $actual->toString());
-    }
+class Framework_Assert_FunctionsTest extends PHPUnit_Framework_TestCase {
+	public function testLogicalAnd() {
+		$expected = $this->logicalAnd ( $this->isTrue (), $this->isFalse () );
+		$actual = logicalAnd ( $this->isTrue (), $this->isFalse () );
+		$this->assertSame ( $expected->toString (), $actual->toString () );
+	}
+	public function testLogicalOr() {
+		$expected = $this->logicalOr ( $this->isTrue (), $this->isFalse () );
+		$actual = logicalOr ( $this->isTrue (), $this->isFalse () );
+		$this->assertSame ( $expected->toString (), $actual->toString () );
+	}
+	public function testLogicalXor() {
+		$expected = $this->logicalXor ( $this->isTrue (), $this->isFalse () );
+		$actual = logicalXor ( $this->isTrue (), $this->isFalse () );
+		$this->assertSame ( $expected->toString (), $actual->toString () );
+	}
 }

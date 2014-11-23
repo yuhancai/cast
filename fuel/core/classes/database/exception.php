@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database exceptions.
  *
@@ -8,7 +9,7 @@
  * @copyright  (c) 2009 Kohana Team
  * @license    http://kohanaphp.com/license
  */
-
 namespace Fuel\Core;
 
-class Database_Exception extends \FuelException {}
+class Database_Exception extends \FuelException {
+}

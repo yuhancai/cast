@@ -45,85 +45,76 @@
 
 /**
  *
- *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Constraint
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.6
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.6
  */
-class PHPUnit_Framework_Constraint_Exception extends PHPUnit_Framework_Constraint
-{
-    /**
-     * @var string
-     */
-    protected $className;
+class PHPUnit_Framework_Constraint_Exception extends PHPUnit_Framework_Constraint {
+	/**
+	 *
+	 * @var string
+	 */
+	protected $className;
+	
+	/**
+	 *
+	 * @param string $className        	
+	 */
+	public function __construct($className) {
+		$this->className = $className;
+	}
+	
+	/**
+	 * Evaluates the constraint for parameter $other.
+	 * Returns TRUE if the
+	 * constraint is met, FALSE otherwise.
+	 *
+	 * @param mixed $other
+	 *        	Value or object to evaluate.
+	 * @return bool
+	 */
+	protected function matches($other) {
+		return $other instanceof $this->className;
+	}
+	
+	/**
+	 * Returns the description of the failure
+	 *
+	 * The beginning of failure messages is "Failed asserting that" in most
+	 * cases. This method should return the second part of that sentence.
+	 *
+	 * @param mixed $other
+	 *        	Evaluated value or object.
+	 * @return string
+	 */
+	protected function failureDescription($other) {
+		if ($other !== NULL) {
+			$message = '';
+			if ($other instanceof Exception && $other->getMessage ()) {
+				$message = '. Message was: "' . $other->getMessage () . '"';
+			}
+			return sprintf ( 'exception of type "%s" matches expected exception "%s"%s', 
 
-    /**
-     * @param string $className
-     */
-    public function __construct($className)
-    {
-        $this->className = $className;
-    }
+			get_class ( $other ), $this->className, $message );
+		}
+		
+		return sprintf ( 'exception of type "%s" is thrown', 
 
-    /**
-     * Evaluates the constraint for parameter $other. Returns TRUE if the
-     * constraint is met, FALSE otherwise.
-     *
-     * @param mixed $other Value or object to evaluate.
-     * @return bool
-     */
-    protected function matches($other)
-    {
-        return $other instanceof $this->className;
-    }
+		$this->className );
+	}
+	
+	/**
+	 * Returns a string representation of the constraint.
+	 *
+	 * @return string
+	 */
+	public function toString() {
+		return sprintf ( 'exception of type "%s"', 
 
-    /**
-     * Returns the description of the failure
-     *
-     * The beginning of failure messages is "Failed asserting that" in most
-     * cases. This method should return the second part of that sentence.
-     *
-     * @param  mixed $other Evaluated value or object.
-     * @return string
-     */
-    protected function failureDescription($other)
-    {
-        if ($other !== NULL) {
-            $message = '';
-            if ($other instanceof Exception && $other->getMessage()) {
-                $message = '. Message was: "' . $other->getMessage() . '"';
-            }
-            return sprintf(
-              'exception of type "%s" matches expected exception "%s"%s',
-
-              get_class($other),
-              $this->className,
-              $message
-            );
-        }
-
-        return sprintf(
-          'exception of type "%s" is thrown',
-
-          $this->className
-        );
-    }
-
-    /**
-     * Returns a string representation of the constraint.
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return sprintf(
-          'exception of type "%s"',
-
-          $this->className
-        );
-    }
+		$this->className );
+	}
 }

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-		backupStaticAttributes="false"
-		bootstrap="./phpunit.php"
-		colors="true"
-		convertErrorsToExceptions="true"
-		convertNoticesToExceptions="true"
-		convertWarningsToExceptions="true"
-		processIsolation="false"
-		stopOnFailure="true"
-		syntaxCheck="false">
+<phpunit backupGlobals="false" backupStaticAttributes="false"
+	bootstrap="./phpunit.php" colors="true" convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true" convertWarningsToExceptions="true"
+	processIsolation="false" stopOnFailure="true" syntaxCheck="false">
 	<testsuites>
 		<testsuite name="fuel/upload">
 			<directory suffix=".php">./tests/</directory>
@@ -20,6 +14,7 @@
 		</blacklist>
 	</filter>
 	<listeners>
-		<listener class="\Mockery\Adapter\Phpunit\TestListener" file="./vendor/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php"></listener>
+		<listener class="\Mockery\Adapter\Phpunit\TestListener"
+			file="./vendor/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php"></listener>
 	</listeners>
 </phpunit>

@@ -50,33 +50,31 @@
  * PHPUnit_Framework_ComparisonFailure which is used to
  * generate diff output of the failed expectations.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.0.0
  */
-class PHPUnit_Framework_ExpectationFailedException extends PHPUnit_Framework_AssertionFailedError
-{
-    /**
-     * @var PHPUnit_Framework_ComparisonFailure
-     */
-    protected $comparisonFailure;
-
-    public function __construct($message, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL, Exception $previous = NULL)
-    {
-        $this->comparisonFailure = $comparisonFailure;
-
-        parent::__construct($message, 0, $previous);
-    }
-
-    /**
-     * @return PHPUnit_Framework_ComparisonFailure
-     */
-    public function getComparisonFailure()
-    {
-        return $this->comparisonFailure;
-    }
+class PHPUnit_Framework_ExpectationFailedException extends PHPUnit_Framework_AssertionFailedError {
+	/**
+	 *
+	 * @var PHPUnit_Framework_ComparisonFailure
+	 */
+	protected $comparisonFailure;
+	public function __construct($message, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL, Exception $previous = NULL) {
+		$this->comparisonFailure = $comparisonFailure;
+		
+		parent::__construct ( $message, 0, $previous );
+	}
+	
+	/**
+	 *
+	 * @return PHPUnit_Framework_ComparisonFailure
+	 */
+	public function getComparisonFailure() {
+		return $this->comparisonFailure;
+	}
 }

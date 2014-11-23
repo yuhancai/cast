@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Part of the Fuel framework.
  *
@@ -9,72 +10,71 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Core;
 
-abstract class Controller
-{
-
+abstract class Controller {
+	
 	/**
-	 * @var  Request  The current Request object
+	 *
+	 * @var Request The current Request object
 	 */
 	public $request;
-
+	
 	/**
-	 * @var  Integer  The default response status
+	 *
+	 * @var Integer The default response status
 	 */
 	public $response_status = 200;
-
+	
 	/**
 	 * Sets the controller request object.
 	 *
-	 * @param   Request   The current request object
+	 * @param
+	 *        	Request The current request object
 	 */
-	public function __construct(\Request $request)
-	{
+	public function __construct(\Request $request) {
 		$this->request = $request;
 	}
-
+	
 	/**
 	 * This method gets called before the action is called
 	 */
-	public function before() {}
-
+	public function before() {
+	}
+	
 	/**
 	 * This method gets called after the action is called
 	 */
-	public function after($response)
-	{
+	public function after($response) {
 		// Make sure the $response is a Response object
-		if ( ! $response instanceof Response)
-		{
-			$response = \Response::forge($response, $this->response_status);
+		if (! $response instanceof Response) {
+			$response = \Response::forge ( $response, $this->response_status );
 		}
-
+		
 		return $response;
 	}
-
+	
 	/**
 	 * This method returns the named parameter requested, or all of them
 	 * if no parameter is given.
 	 *
-	 * @param   string  $param    The name of the parameter
-	 * @param   mixed   $default  Default value
-	 * @return  mixed
+	 * @param string $param
+	 *        	The name of the parameter
+	 * @param mixed $default
+	 *        	Default value
+	 * @return mixed
 	 */
-	public function param($param, $default = null)
-	{
-		return $this->request->param($param, $default);
+	public function param($param, $default = null) {
+		return $this->request->param ( $param, $default );
 	}
-
+	
 	/**
 	 * This method returns all of the named parameters.
 	 *
-	 * @return  array
+	 * @return array
 	 */
-	public function params()
-	{
-		return $this->request->params();
+	public function params() {
+		return $this->request->params ();
 	}
 }
 

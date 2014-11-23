@@ -18,8 +18,6 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-
-
 return array(
 
 	/*
@@ -28,13 +26,13 @@ return array(
 	|	Default: 0
 	|
 	*/
-	'version' => array(
-		'app' => array(
-			'default' => 0,
+	'version' => array (
+				'app' => array (
+						'default' => 0 
+				),
+				'module' => array (),
+				'package' => array () 
 		),
-		'module' => array(),
-		'package' => array()
-	),
 
 	/*
 	| Folder name where migrations are stored relative to App, Module and Package Paths?
@@ -50,7 +48,7 @@ return array(
 	|	Default: 'migration'
 	|
 	*/
-	'table' => 'migration',
-
-);
+	'table' => 'migration' 
+)
+;
 

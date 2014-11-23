@@ -1,4 +1,6 @@
-<h2>Editing <span class='muted'>Item</span></h2>
+<h2>
+	Editing <span class='muted'>Item</span>
+</h2>
 <br>
 
 <?php echo render('item/_form'); ?>

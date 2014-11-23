@@ -47,120 +47,125 @@
 /**
  * Thrown when an assertion for string equality failed.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.0.0
  */
-class PHPUnit_Framework_ComparisonFailure extends PHPUnit_Framework_AssertionFailedError
-{
-    /**
-     * Expected value of the retrieval which does not match $actual.
-     * @var mixed
-     */
-    protected $expected;
-
-    /**
-     * Actually retrieved value which does not match $expected.
-     * @var mixed
-     */
-    protected $actual;
-
-    /**
-     * The string representation of the expected value
-     * @var string
-     */
-    protected $expectedAsString;
-
-    /**
-     * The string representation of the actual value
-     * @var string
-     */
-    protected $actualAsString;
-
-    /**
-     * @var boolean
-     */
-    protected $identical;
-
-    /**
-     * Optional message which is placed in front of the first line
-     * returned by toString().
-     * @var string
-     */
-    protected $message;
-
-    /**
-     * Initialises with the expected value and the actual value.
-     *
-     * @param mixed $expected Expected value retrieved.
-     * @param mixed $actual Actual value retrieved.
-     * @param string $expectedAsString
-     * @param string $actualAsString
-     * @param boolean $identical
-     * @param string $message A string which is prefixed on all returned lines
-     *                        in the difference output.
-     */
-    public function __construct($expected, $actual, $expectedAsString, $actualAsString, $identical = FALSE, $message = '')
-    {
-        $this->expected         = $expected;
-        $this->actual           = $actual;
-        $this->expectedAsString = $expectedAsString;
-        $this->actualAsString   = $actualAsString;
-        $this->message          = $message;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActual()
-    {
-        return $this->actual;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExpected()
-    {
-        return $this->expected;
-    }
-
-    /**
-     * @return string
-     */
-    public function getActualAsString()
-    {
-        return $this->actualAsString;
-    }
-
-    /**
-     * @return string
-     */
-    public function getExpectedAsString()
-    {
-        return $this->expectedAsString;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDiff()
-    {
-        return $this->actualAsString || $this->expectedAsString
-          ? PHPUnit_Util_Diff::diff($this->expectedAsString, $this->actualAsString)
-          : '';
-    }
-
-    /**
-     * @return string
-     */
-    public function toString()
-    {
-        return $this->message . $this->getDiff();
-    }
+class PHPUnit_Framework_ComparisonFailure extends PHPUnit_Framework_AssertionFailedError {
+	/**
+	 * Expected value of the retrieval which does not match $actual.
+	 * 
+	 * @var mixed
+	 */
+	protected $expected;
+	
+	/**
+	 * Actually retrieved value which does not match $expected.
+	 * 
+	 * @var mixed
+	 */
+	protected $actual;
+	
+	/**
+	 * The string representation of the expected value
+	 * 
+	 * @var string
+	 */
+	protected $expectedAsString;
+	
+	/**
+	 * The string representation of the actual value
+	 * 
+	 * @var string
+	 */
+	protected $actualAsString;
+	
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $identical;
+	
+	/**
+	 * Optional message which is placed in front of the first line
+	 * returned by toString().
+	 * 
+	 * @var string
+	 */
+	protected $message;
+	
+	/**
+	 * Initialises with the expected value and the actual value.
+	 *
+	 * @param mixed $expected
+	 *        	Expected value retrieved.
+	 * @param mixed $actual
+	 *        	Actual value retrieved.
+	 * @param string $expectedAsString        	
+	 * @param string $actualAsString        	
+	 * @param boolean $identical        	
+	 * @param string $message
+	 *        	A string which is prefixed on all returned lines
+	 *        	in the difference output.
+	 */
+	public function __construct($expected, $actual, $expectedAsString, $actualAsString, $identical = FALSE, $message = '') {
+		$this->expected = $expected;
+		$this->actual = $actual;
+		$this->expectedAsString = $expectedAsString;
+		$this->actualAsString = $actualAsString;
+		$this->message = $message;
+	}
+	
+	/**
+	 *
+	 * @return mixed
+	 */
+	public function getActual() {
+		return $this->actual;
+	}
+	
+	/**
+	 *
+	 * @return mixed
+	 */
+	public function getExpected() {
+		return $this->expected;
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public function getActualAsString() {
+		return $this->actualAsString;
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public function getExpectedAsString() {
+		return $this->expectedAsString;
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public function getDiff() {
+		return $this->actualAsString || $this->expectedAsString ? PHPUnit_Util_Diff::diff ( $this->expectedAsString, $this->actualAsString ) : '';
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public function toString() {
+		return $this->message . $this->getDiff ();
+	}
 }

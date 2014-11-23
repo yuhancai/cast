@@ -23,10 +23,13 @@ class Controller_Draw extends Controller_Template{
 		//$query = DB::query('SELECT * FROM items')->as_object()->execute();
 		//print_r($query);
 		//print_r(Model_Item::insertData("15"));
-		print_r(Model_Item::getInfoFromUrl("http://1.163.com/detail/01-37-00-04-20.html"));
+		$arr=Model_Item::getInfoFromUrl("http://1.163.com/detail/01-37-00-04-20.html");
+		echo strlen((string)(int)$arr[1]);
 		print_r(Model_Item::getItemidFromForurl(15));
 		echo "<br />";
-		$this->getDataFromOnepage();
+		print_r($this->getDataFromUrl("http://1.163.com/detail/01-37-00-00-03.html"));
+		print_r($this->getAllDataFromUrl("http://1.163.com/detail/01-37-00-00-03.html"));
+		
 		//$this->getDataFromWeb();
 /* 		$qishu=1;
 		$luckynum=1;
@@ -197,29 +200,67 @@ class Controller_Draw extends Controller_Template{
 
 	}
 /////////
-   public function getDataFromOnepage($url=null)
+   public function getDataFromUrl($url=null)
    {
 
-   	$content = file_get_contents('http://1.163.com/detail/01-37-00-04-20.html');   	
+   	$content = file_get_contents($url);   	
    	$obj = new Grep();
    	$obj->set($content);   	
    	$t = $obj->get('shijian', 1);
+   	$duobaotime=$t[1];
+   	$jieshutime=$t[2];
+   	$jiexiaotime=$t[0];
    	$diji = $obj->get('dijiqi', 0);
    	$pattern='/\d{1,}/';
    	preg_match($pattern,$diji[0], $matches);
    	$diji=$matches[0];
    	$zhong = $obj->get('luckynum', 0)[0];
-   	//$t = $obj->get('shijian', 1);
-   	//print_r($url);
-   	echo "<br />";
-   	print_r($t);
-   	echo "<br />";
-   	print_r($diji);
-   	echo "<br />";
-   	print_r($zhong);
-   	
-   	
+    $info=array(
+    		'duobaotime'=>$duobaotime,
+    		'jieshutime'=>$jieshutime,
+    		'jiexiaotime'=>$jiexiaotime,
+    		'diji'=>$diji,
+    		'zhong'=>$zhong 
+          );
+   	return $info;   	
+   }
+   
+   public function getAllDataFromUrl($url=null)
+   {
+   	$arrInfo=Model_Item::getInfoFromUrl($url);
+   	for($s=1;$s<=(int)$arrInfo[1];$s++)
+   	{
+   		$str="http://1.163.com/detail/";
+   		$str.=$arrInfo[0];
+    	switch (strlen((string)$s))
+		{
+			case 1: $str.="-00-00-0".$s.".html";break;
+			case 2: $str.="-00-00-".$s.".html"; break;
+			case 3: $str.="-00-0".substr($s,0,1)."-".substr($s,-2).".html";break;
+			case 4: $str.="-00-".substr($s,0,2)."-".substr($s,-2).".html";break;
+			case 5: $str.="-0".substr($s,0,1)."-".substr($s,1,2)."-".substr($s,-2).".html";break;
+			case 6: $str.="-".substr($s,0,2)."-".substr($s,2,2)."-".substr($s,4).".html";break;
+		    default: break;
+		}
+		$jieshu[]=$this->getDataFromUrl($str)['jieshutime'];
+		$fromOnepage=$this->getDataFromUrl($str);
+		if($s>1)
+		{
+			$allData[]=array("kaishitime"=>$jieshu[$s-1],"duobaotime"=>$fromOnepage['duobaotime'],"jieshutime"=>$fromOnepage['jieshutime'],"jiexiaotime"=>$fromOnepage['jiexiaotime'],"diji"=>$fromOnepage['diji'],"zhong"=>$fromOnepage['zhong']);
+		}
+		
+		$ar[]=$str;
+
+   	}   	
+   
+   	return $allData;   
    }
    
 
+      	 
+      
 }
+    
+    
+
+

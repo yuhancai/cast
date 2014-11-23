@@ -46,95 +46,89 @@
 
 /**
  *
- *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework_Constraint
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @author     Bernhard Schussek <bschussek@2bepublished.at>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @author Bernhard Schussek <bschussek@2bepublished.at>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 3.6.0
  */
-class PHPUnit_Framework_Constraint_Count extends PHPUnit_Framework_Constraint
-{
-    /**
-     * @var integer
-     */
-    protected $expectedCount = 0;
+class PHPUnit_Framework_Constraint_Count extends PHPUnit_Framework_Constraint {
+	/**
+	 *
+	 * @var integer
+	 */
+	protected $expectedCount = 0;
+	
+	/**
+	 *
+	 * @param integer $expected        	
+	 */
+	public function __construct($expected) {
+		$this->expectedCount = $expected;
+	}
+	
+	/**
+	 * Evaluates the constraint for parameter $other.
+	 * Returns TRUE if the
+	 * constraint is met, FALSE otherwise.
+	 *
+	 * @param mixed $other        	
+	 * @return boolean
+	 */
+	protected function matches($other) {
+		return $this->expectedCount === $this->getCountOf ( $other );
+	}
+	
+	/**
+	 *
+	 * @param mixed $other        	
+	 * @return boolean
+	 */
+	protected function getCountOf($other) {
+		if ($other instanceof Countable || is_array ( $other )) {
+			return count ( $other );
+		} 
 
-    /**
-     * @param integer $expected
-     */
-    public function __construct($expected)
-    {
-        $this->expectedCount = $expected;
-    }
+		else if ($other instanceof Iterator) {
+			$key = $other->key ();
+			$count = iterator_count ( $other );
+			
+			// manually rewind $other to previous key, since iterator_count moves pointer
+			if ($key !== null) {
+				$other->rewind ();
+				while ( $key !== $other->key () ) {
+					$other->next ();
+				}
+			}
+			
+			return $count;
+		}
+	}
+	
+	/**
+	 * Returns the description of the failure
+	 *
+	 * The beginning of failure messages is "Failed asserting that" in most
+	 * cases. This method should return the second part of that sentence.
+	 *
+	 * @param mixed $other
+	 *        	Evaluated value or object.
+	 * @return string
+	 */
+	protected function failureDescription($other) {
+		return sprintf ( 'actual size %d matches expected size %d', 
 
-    /**
-     * Evaluates the constraint for parameter $other. Returns TRUE if the
-     * constraint is met, FALSE otherwise.
-     *
-     * @param mixed $other
-     * @return boolean
-     */
-    protected function matches($other)
-    {
-        return $this->expectedCount === $this->getCountOf($other);
-    }
-
-    /**
-     * @param mixed $other
-     * @return boolean
-     */
-    protected function getCountOf($other)
-    {
-        if ($other instanceof Countable || is_array($other)) {
-            return count($other);
-        }
-
-        else if ($other instanceof Iterator) {
-            $key = $other->key();
-            $count = iterator_count($other);
-
-            // manually rewind $other to previous key, since iterator_count moves pointer
-            if ($key !== null) {
-                $other->rewind();
-                while ($key !== $other->key()) {
-                    $other->next();
-                }
-            }
-
-            return $count;
-        }
-
-    }
-
-
-    /**
-     * Returns the description of the failure
-     *
-     * The beginning of failure messages is "Failed asserting that" in most
-     * cases. This method should return the second part of that sentence.
-     *
-     * @param  mixed $other Evaluated value or object.
-     * @return string
-     */
-    protected function failureDescription($other)
-    {
-        return sprintf(
-          'actual size %d matches expected size %d',
-
-          $this->getCountOf($other),
-          $this->expectedCount
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public function toString()
-    {
-        return 'count matches ';
-    }
+		$this->getCountOf ( $other ), $this->expectedCount );
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public function toString() {
+		return 'count matches ';
+	}
 }

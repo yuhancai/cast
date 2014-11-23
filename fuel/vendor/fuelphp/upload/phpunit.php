@@ -1,10 +1,12 @@
 <?php
 
 namespace Fuel\Upload {
-	class Dummy {}
+
+	class Dummy {
+	}
 }
 
-
 namespace {
+
 	include './vendor/autoload.php';
 }

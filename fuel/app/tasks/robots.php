@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
@@ -9,7 +10,6 @@
  * @copyright  2010 - 2013 Fuel Development Team
  * @link       http://fuelphp.com
  */
-
 namespace Fuel\Tasks;
 
 /**
@@ -17,16 +17,14 @@ namespace Fuel\Tasks;
  *
  * Ruthlessly stolen from the beareded Canadian sexy symbol:
  *
- *		Derek Allard: http://derekallard.com/
+ * Derek Allard: http://derekallard.com/
  *
- * @package		Fuel
- * @version		1.0
- * @author		Phil Sturgeon
+ * @package Fuel
+ * @version 1.0
+ * @author Phil Sturgeon
  */
-
-class Robots
-{
-
+class Robots {
+	
 	/**
 	 * This method gets ran when a valid method name is not used in the command.
 	 *
@@ -40,21 +38,17 @@ class Robots
 	 *
 	 * @return string
 	 */
-	public static function run($speech = null)
-	{
-		if ( ! isset($speech))
-		{
+	public static function run($speech = null) {
+		if (! isset ( $speech )) {
 			$speech = 'KILL ALL HUMANS!';
 		}
-
-		$eye = \Cli::color("*", 'red');
-
-		return \Cli::color("
+		
+		$eye = \Cli::color ( "*", 'red' );
+		
+		return \Cli::color ( "
 					\"{$speech}\"
 			          _____     /
-			         /_____\\", 'blue')."\n"
-.\Cli::color("			    ____[\\", 'blue').$eye.\Cli::color('---', 'blue').$eye.\Cli::color('/]____', 'blue')."\n"
-.\Cli::color("			   /\\ #\\ \\_____/ /# /\\
+			         /_____\\", 'blue' ) . "\n" . \Cli::color ( "			    ____[\\", 'blue' ) . $eye . \Cli::color ( '---', 'blue' ) . $eye . \Cli::color ( '/]____', 'blue' ) . "\n" . \Cli::color ( "			   /\\ #\\ \\_____/ /# /\\
 			  /  \\# \\_.---._/ #/  \\
 			 /   /|\\  |   |  /|\\   \\
 			/___/ | | |   | | | \\___\\
@@ -69,9 +63,9 @@ class Robots
 			      |___|   |___|
 			      /   \\   /   \\
 			     |_____| |_____|
-			     |HHHHH| |HHHHH|", 'blue');
+			     |HHHHH| |HHHHH|", 'blue' );
 	}
-
+	
 	/**
 	 * An example method that is here just to show the various uses of tasks.
 	 *
@@ -81,16 +75,13 @@ class Robots
 	 *
 	 * @return string
 	 */
-	public static function protect()
-	{
-		$eye = \Cli::color("*", 'green');
-
-		return \Cli::color("
+	public static function protect() {
+		$eye = \Cli::color ( "*", 'green' );
+		
+		return \Cli::color ( "
 					\"PROTECT ALL HUMANS\"
 			          _____     /
-			         /_____\\", 'blue')."\n"
-.\Cli::color("			    ____[\\", 'blue').$eye.\Cli::color('---', 'blue').$eye.\Cli::color('/]____', 'blue')."\n"
-.\Cli::color("			   /\\ #\\ \\_____/ /# /\\
+			         /_____\\", 'blue' ) . "\n" . \Cli::color ( "			    ____[\\", 'blue' ) . $eye . \Cli::color ( '---', 'blue' ) . $eye . \Cli::color ( '/]____', 'blue' ) . "\n" . \Cli::color ( "			   /\\ #\\ \\_____/ /# /\\
 			  /  \\# \\_.---._/ #/  \\
 			 /   /|\\  |   |  /|\\   \\
 			/___/ | | |   | | | \\___\\
@@ -105,8 +96,7 @@ class Robots
 			      |___|   |___|
 			      /   \\   /   \\
 			     |_____| |_____|
-			     |HHHHH| |HHHHH|", 'blue');
-
+			     |HHHHH| |HHHHH|", 'blue' );
 	}
 }
 

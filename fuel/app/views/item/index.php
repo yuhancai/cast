@@ -1,4 +1,6 @@
-<h2>Listing <span class='muted'>Items</span></h2>
+<h2>
+	Listing <span class='muted'>Items</span>
+</h2>
 <br>
 <?php if ($items): ?>
 <table class="table table-striped">
@@ -24,7 +26,7 @@
 				</div>
 
 			</td>
-</tr>
+		</tr>
 <?php endforeach; ?>	</tbody>
 </table>
 

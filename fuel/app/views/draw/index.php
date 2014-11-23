@@ -1,4 +1,6 @@
-<h2>Listing <span class='muted'>Draws</span></h2>
+<h2>
+	Listing <span class='muted'>Draws</span>
+</h2>
 <br>
 <?php if ($draws): ?>
 <table class="table table-striped">

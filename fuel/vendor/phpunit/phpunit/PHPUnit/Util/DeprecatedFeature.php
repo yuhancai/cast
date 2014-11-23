@@ -47,56 +47,56 @@
 /**
  * Class to hold the information about a deprecated feature that was used
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Framework
- * @author     Ralph Schindler <ralph.schindler@zend.com>
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Interface available since Release 3.5.7
+ * @author Ralph Schindler <ralph.schindler@zend.com>
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Interface available since Release 3.5.7
  */
-class PHPUnit_Util_DeprecatedFeature
-{
-    /**
-     * @var array
-     */
-    protected $traceInfo = array();
-
-    /**
-     * @var string
-     */
-    protected $message = NULL;
-
-    /**
-     * @param  string $message
-     * @param  array  $traceInfo
-     */
-    public function __construct($message, array $traceInfo = array())
-    {
-        $this->message   = $message;
-        $this->traceInfo = $traceInfo;
-    }
-
-    /**
-     * Build a string representation of the deprecated feature that was raised
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        $string = '';
-
-        if (isset($this->traceInfo['file'])) {
-            $string .= $this->traceInfo['file'];
-
-            if (isset($this->traceInfo['line'])) {
-                $string .= ':' . $this->traceInfo['line'] . ' - ';
-            }
-        }
-
-        $string .= $this->message;
-
-        return $string;
-    }
+class PHPUnit_Util_DeprecatedFeature {
+	/**
+	 *
+	 * @var array
+	 */
+	protected $traceInfo = array ();
+	
+	/**
+	 *
+	 * @var string
+	 */
+	protected $message = NULL;
+	
+	/**
+	 *
+	 * @param string $message        	
+	 * @param array $traceInfo        	
+	 */
+	public function __construct($message, array $traceInfo = array()) {
+		$this->message = $message;
+		$this->traceInfo = $traceInfo;
+	}
+	
+	/**
+	 * Build a string representation of the deprecated feature that was raised
+	 *
+	 * @return string
+	 */
+	public function __toString() {
+		$string = '';
+		
+		if (isset ( $this->traceInfo ['file'] )) {
+			$string .= $this->traceInfo ['file'];
+			
+			if (isset ( $this->traceInfo ['line'] )) {
+				$string .= ':' . $this->traceInfo ['line'] . ' - ';
+			}
+		}
+		
+		$string .= $this->message;
+		
+		return $string;
+	}
 }

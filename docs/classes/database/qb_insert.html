@@ -1,32 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../';
 		var class_prefix = 'Query_Builder_Insert::';
 	</script>
-	<script src="./../../assets/js/combined.js"></script>
-	<title>Query Builder Insert - Classes - FuelPHP Documentation</title>
+<script src="./../../assets/js/combined.js"></script>
+<title>Query Builder Insert - Classes - FuelPHP Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -51,14 +50,16 @@
 				(extends <a href="qb_where.html">Query_Builder_Where</a>)
 			</p>
 
-			<p>
-				The Query_Builder_Insert class handles all the insert operations for the query building process. It extends the
-				Query_Builder_Where class, so all the methods are inherited.
-			</p>
+			<p>The Query_Builder_Insert class handles all the insert
+				operations for the query building process. It extends the
+				Query_Builder_Where class, so all the methods are inherited.</p>
 
 			<article>
 				<h4 class="method" id="method_table">table($table)</h4>
-				<p>The <strong>table</strong> method sets/changes the table to insert into.</p>
+				<p>
+					The <strong>table</strong> method sets/changes the table to insert
+					into.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -90,16 +91,16 @@
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::insert('users');
 
 // Update the table to insert into
 $query->table('admins');
 
 // INSERT INTO `admins` ...
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -107,7 +108,10 @@ $query->table('admins');
 
 			<article>
 				<h4 class="method" id="method_columns">columns(array $columns)</h4>
-				<p>The <strong>columns</strong> method sets/changes the columns to insert.</p>
+				<p>
+					The <strong>columns</strong> method sets/changes the columns to
+					insert.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -139,8 +143,8 @@ $query->table('admins');
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::insert('users');
 
 // Set the columns
@@ -151,8 +155,8 @@ $query->columns(array(
 );
 
 // INSERT INTO `users` (`name`, `surname`, `email`)
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -160,7 +164,9 @@ $query->columns(array(
 
 			<article>
 				<h4 class="method" id="method_values">values(array $values)</h4>
-				<p>The <strong>values</strong> method appends the values to insert.</p>
+				<p>
+					The <strong>values</strong> method appends the values to insert.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -192,8 +198,8 @@ $query->columns(array(
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::insert('users');
 
 // Set the columns
@@ -212,8 +218,8 @@ $query->values(array(
 ));
 
 // INSERT INTO `users` (`name`, `surname`, `email`) VALUES ("John", "Doe", "john@doe.com")
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -221,7 +227,10 @@ $query->values(array(
 
 			<article>
 				<h4 class="method" id="method_set">set(array $pairs)</h4>
-				<p>The <strong>set</strong> method sets the columns and appends the values to insert.</p>
+				<p>
+					The <strong>set</strong> method sets the columns and appends the
+					values to insert.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -253,8 +262,8 @@ $query->values(array(
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::insert('users');
 
 // Set the columns and vales
@@ -265,8 +274,8 @@ $query->set(array(
 ));
 
 // INSERT INTO `users` (`name`, `surname`, `email`) VALUES ("John", "Doe", "john@doe.com")
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -274,7 +283,10 @@ $query->set(array(
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p>The <strong>limit</strong> method returns the insert SQL query as a string.</p>
+				<p>
+					The <strong>limit</strong> method returns the insert SQL query as a
+					string.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -306,8 +318,8 @@ $query->set(array(
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::select('*')->from('users');
 
 // Set the limit and offset
@@ -319,8 +331,8 @@ $connection = Database_Connection::instance();
 
 // Get the sql query
 $sql = $query->compile($connection);
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -328,7 +340,10 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_reset">reset()</h4>
-				<p>The <strong>reset</strong> method resets all values of the current instance.</p>
+				<p>
+					The <strong>reset</strong> method resets all values of the current
+					instance.
+				</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -337,9 +352,7 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Parameters</th>
-							<td>
-								<em>None</em>
-							</td>
+							<td><em>None</em></td>
 						</tr>
 						<tr>
 							<th>Returns</th>
@@ -347,8 +360,8 @@ $sql = $query->compile($connection);
 						</tr>
 						<tr>
 							<th>Example</th>
-							<td>
-								<pre class="php"><code>// prepare an insert statement
+							<td><pre class="php">
+									<code>// prepare an insert statement
 $query = DB::insert('users');
 
 // Set some values
@@ -368,8 +381,8 @@ $query->table('admins')->set(array(
 
 // The SQL query will now be:
 // INSERT INTO `admins` (`name`, `surname`) VALUES ("Mark", "Hendriks")
-</code></pre>
-							</td>
+</code>
+								</pre></td>
 						</tr>
 					</tbody>
 				</table>
@@ -379,7 +392,9 @@ $query->table('admins')->set(array(
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

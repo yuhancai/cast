@@ -1,31 +1,31 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./../../../assets/css/combined.css">
-	<link rel="shortcut icon" href="./../../../favicon.ico" />
-	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./../../../assets/css/combined.css">
+<link rel="shortcut icon" href="./../../../favicon.ico" />
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
 		var path = './../../../';
 	</script>
-	<script src="./../../../assets/js/combined.js"></script>
-	<title>Opauth Controller example - Auth Package - FuelPHP Documentation</title>
+<script src="./../../../assets/js/combined.js"></script>
+<title>Opauth Controller example - Auth Package - FuelPHP
+	Documentation</title>
 </head>
 <body>
 	<div id="container">
 		<header id="header">
 			<div class="table">
 				<h1>
-					<strong>FuelPHP, a PHP 5.3 Framework</strong>
-					Documentation
+					<strong>FuelPHP, a PHP 5.3 Framework</strong> Documentation
 				</h1>
 
 				<form id="google_search">
 					<p>
-						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
-						<input type="text" value="" id="search_input" name="search_input" />
+						<span id="search_clear">&nbsp;</span> <input type="submit"
+							name="search_submit" id="search_submit" value="search" /> <input
+							type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
 			</div>
@@ -45,17 +45,22 @@
 		<div id="main">
 			<h2>Using Opauth in your application</h2>
 
-			<p>On this page you will find an example of the methods needed to integrate OAuth authentication in your application. It extends
-			the functionality from the standard Auth controller, documented <a href="auth.html">here</a>.
-
+			<p>
+				On this page you will find an example of the methods needed to
+				integrate OAuth authentication in your application. It extends the
+				functionality from the standard Auth controller, documented <a
+					href="auth.html">here</a>.
 			<h3 id="login">Login</h3>
 
-			<p>This is the example code for the oauth method. It expects the name of the OAuth provider as a URI parameter,
-			so it should be called like "login/oath/facebook" if you want to use the Facebook Opauth Strategy. As an alternative
-			you could opt to integrate this functionality in the standard login method, which then could deal with manual login
-			through a form if no provider was given.</p>
+			<p>This is the example code for the oauth method. It expects the
+				name of the OAuth provider as a URI parameter, so it should be
+				called like "login/oath/facebook" if you want to use the Facebook
+				Opauth Strategy. As an alternative you could opt to integrate this
+				functionality in the standard login method, which then could deal
+				with manual login through a form if no provider was given.</p>
 
-<pre class="php"><code>public function action_oauth($provider = null)
+			<pre class="php">
+				<code>public function action_oauth($provider = null)
 {
 	// bail out if we don't have an OAuth provider to call
 	if ($provider === null)
@@ -66,21 +71,31 @@
 
 	// load Opauth, it will load the provider strategy and redirect to the provider
 	\Auth_Opauth::forge();
-}</code></pre>
+}</code>
+			</pre>
 
-			<p>You should check the <a href="../opauth/intro.html">Opauth</a> class documentation to see how it works, and how it can
-			be configured. Here, we're using the default setup.</p>
+			<p>
+				You should check the <a href="../opauth/intro.html">Opauth</a> class
+				documentation to see how it works, and how it can be configured.
+				Here, we're using the default setup.
+			</p>
 
 			<h3 id="callback">The OAuth callback</h3>
 
-			<p>Since we've used a default configuration when we called the OAuth provider in the previous method, the callback URL passed
-			to the provider was generated for us. By default, it will return to a method called 'callback' in the same controller (technically,
-			the same URI path, as you can use routes to have to point to a different controller) as which contains the login method.</p>
+			<p>Since we've used a default configuration when we called the
+				OAuth provider in the previous method, the callback URL passed to
+				the provider was generated for us. By default, it will return to a
+				method called 'callback' in the same controller (technically, the
+				same URI path, as you can use routes to have to point to a different
+				controller) as which contains the login method.</p>
 
-			<p>This is the example code for the callback method. It uses the Opauth 'login_or_register' method to process the callback and
-			get the associated local user. The returned status will tell you want to do next.</p>
+			<p>This is the example code for the callback method. It uses the
+				Opauth 'login_or_register' method to process the callback and get
+				the associated local user. The returned status will tell you want to
+				do next.</p>
 
-<pre class="php"><code>public function action_callback()
+			<pre class="php">
+				<code>public function action_callback()
 	{
 		// Opauth can throw all kinds of nasty bits, so be prepared
 		try
@@ -151,15 +166,22 @@
 			exit('It looks like you canceled your authorisation.'.\Html::anchor('users/oath/'.$provider, 'Click here').' to try again.');
 		}
 
-}</code></pre>
+}</code>
+			</pre>
 
 			<h3 id="registration">Registration</h3>
 
-			<p>This is the example code for the new user registration method. It is based on the standard registration method that has been
-			documented in this <a href="auth.html#registration">example</a>, and is extended to support user registration after a valid
-			Opauth callback (the call to 'login_or_register' has returned the 'register' status).</p>
+			<p>
+				This is the example code for the new user registration method. It is
+				based on the standard registration method that has been documented
+				in this <a href="auth.html#registration">example</a>, and is
+				extended to support user registration after a valid Opauth callback
+				(the call to 'login_or_register' has returned the 'register'
+				status).
+			</p>
 
-<pre class="php"><code>public function action_register()
+			<pre class="php">
+				<code>public function action_register()
 {
 	// is registration enabled?
 	if ( ! \Config::get('application.user.registration', false))
@@ -327,23 +349,31 @@
 
 	// pass the fieldset to the form, and display the new user registration view
 	return \View::forge('login/registration')->set('form', $form, false)->set('login', isset($login) ? $login : null, false);
-}</code></pre>
+}</code>
+			</pre>
 
-			<p>As we now have a registration page with two forms (a registration form and a login form), we have to distinguish which of the
-			forms was submitted. To do so, we have used the name of the submit button here, which is either 'login' or 'register'. You are
-			free to use any another method if you want.
-			</p>
+			<p>As we now have a registration page with two forms (a
+				registration form and a login form), we have to distinguish which of
+				the forms was submitted. To do so, we have used the name of the
+				submit button here, which is either 'login' or 'register'. You are
+				free to use any another method if you want.</p>
 
-			<p>Note that we use this registration method also for normal new user registrations. For those obviously you should not display
-			the second login form. This can be controlled by the form variable $login, which is null if there if it's a normal registration,
-			and contains a fieldset if it's a registration after a provider callback.</p>
+			<p>Note that we use this registration method also for normal new
+				user registrations. For those obviously you should not display the
+				second login form. This can be controlled by the form variable
+				$login, which is null if there if it's a normal registration, and
+				contains a fieldset if it's a registration after a provider
+				callback.</p>
 
 			<h3 id="link_provider">Linking a provider to a local account</h3>
 
-			<p>After new user registration is succesful, the new account needs to be linked to the provider the user used to login to your
-			application. The functionality for this is part of the Auth_Opauth class, but we use a local method to aid in calling it.</p>
+			<p>After new user registration is succesful, the new account
+				needs to be linked to the provider the user used to login to your
+				application. The functionality for this is part of the Auth_Opauth
+				class, but we use a local method to aid in calling it.</p>
 
-<pre class="php"><code>protected function link_provider($userid)
+			<pre class="php">
+				<code>protected function link_provider($userid)
 {
 	// do we have an auth strategy to match?
 	if ($authentication = \Session::get('auth-strategy.authentication', array()))
@@ -363,13 +393,16 @@
 			'created_at' => time(),
 		));
 	}
-}</code></pre>
+}</code>
+			</pre>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP Development Team 2010-2013 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+				&copy; FuelPHP Development Team 2010-2013 - <a
+					href="http://fuelphp.com">FuelPHP</a> is released under the MIT
+				license.
 			</p>
 		</footer>
 	</div>

@@ -46,57 +46,55 @@
 /**
  * This class defines the current version of PHPUnit.
  *
- * @package    PHPUnit
+ * @package PHPUnit
  * @subpackage Runner
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 2.0.0
+ * @author Sebastian Bergmann <sebastian@phpunit.de>
+ * @copyright 2001-2014 Sebastian Bergmann <sebastian@phpunit.de>
+ * @license http://www.opensource.org/licenses/BSD-3-Clause The BSD 3-Clause License
+ * @link http://www.phpunit.de/
+ * @since Class available since Release 2.0.0
  */
-class PHPUnit_Runner_Version
-{
-    const VERSION = '3.7.38';
-    protected static $version;
-
-    /**
-     * Returns the current version of PHPUnit.
-     *
-     * @return string
-     */
-    public static function id()
-    {
-        if (self::$version === NULL) {
-            self::$version = self::VERSION;
-
-            if (is_dir(dirname(dirname(__DIR__)) . '/.git')) {
-                $dir = getcwd();
-                chdir(__DIR__);
-                $version = exec('git describe --tags 2>&1', $output, $returnCode);
-                chdir($dir);
-
-                if ($version && $returnCode === 0) {
-                    if (count(explode('.', self::VERSION)) == 3) {
-                        self::$version = $version;
-                    } else {
-                        $version = explode('-', $version);
-
-                        self::$version = self::VERSION . '-' . $version[2];
-                    }
-                } else {
-                    self::$version = self::VERSION . '-dev';
-                }
-            }
-        }
-
-        return self::$version;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getVersionString()
-    {
-        return 'PHPUnit ' . self::id() . ' by Sebastian Bergmann.';
-    }
+class PHPUnit_Runner_Version {
+	const VERSION = '3.7.38';
+	protected static $version;
+	
+	/**
+	 * Returns the current version of PHPUnit.
+	 *
+	 * @return string
+	 */
+	public static function id() {
+		if (self::$version === NULL) {
+			self::$version = self::VERSION;
+			
+			if (is_dir ( dirname ( dirname ( __DIR__ ) ) . '/.git' )) {
+				$dir = getcwd ();
+				chdir ( __DIR__ );
+				$version = exec ( 'git describe --tags 2>&1', $output, $returnCode );
+				chdir ( $dir );
+				
+				if ($version && $returnCode === 0) {
+					if (count ( explode ( '.', self::VERSION ) ) == 3) {
+						self::$version = $version;
+					} else {
+						$version = explode ( '-', $version );
+						
+						self::$version = self::VERSION . '-' . $version [2];
+					}
+				} else {
+					self::$version = self::VERSION . '-dev';
+				}
+			}
+		}
+		
+		return self::$version;
+	}
+	
+	/**
+	 *
+	 * @return string
+	 */
+	public static function getVersionString() {
+		return 'PHPUnit ' . self::id () . ' by Sebastian Bergmann.';
+	}
 }

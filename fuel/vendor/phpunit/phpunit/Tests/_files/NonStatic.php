@@ -1,8 +1,6 @@
 <?php
-class NonStatic
-{
-    public function suite()
-    {
-        return NULL;
-    }
+class NonStatic {
+	public function suite() {
+		return NULL;
+	}
 }
