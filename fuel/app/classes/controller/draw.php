@@ -228,7 +228,8 @@ class Controller_Draw extends Controller_Template{
    public function getAllDataFromUrl($url=null)
    {
    	$arrInfo=Model_Item::getInfoFromUrl($url);
-   	for($s=1;$s<=(int)$arrInfo[1];$s++)
+   	$total=(int)$arrInfo[1];
+   	for($s=1;$s<=$total;$s++)
    	{
    		$str="http://1.163.com/detail/";
    		$str.=$arrInfo[0];
@@ -246,13 +247,12 @@ class Controller_Draw extends Controller_Template{
 		$fromOnepage=$this->getDataFromUrl($str);
 		if($s>1)
 		{
-			$allData[]=array("kaishitime"=>$jieshu[$s-1],"duobaotime"=>$fromOnepage['duobaotime'],"jieshutime"=>$fromOnepage['jieshutime'],"jiexiaotime"=>$fromOnepage['jiexiaotime'],"diji"=>$fromOnepage['diji'],"zhong"=>$fromOnepage['zhong']);
+			$allData[]=array("kaishitime"=>$jieshu[$s-2],"duobaotime"=>$fromOnepage['duobaotime'],"jieshutime"=>$fromOnepage['jieshutime'],"jiexiaotime"=>$fromOnepage['jiexiaotime'],"diji"=>$fromOnepage['diji'],"zhong"=>$fromOnepage['zhong']);
 		}
 		
 		$ar[]=$str;
 
-   	}   	
-   
+   	}      
    	return $allData;   
    }
    
