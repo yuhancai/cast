@@ -47,4 +47,19 @@ class Model_Draw extends Model {
 		$result=$query->execute()->as_array();
 		return $result[0]['qishu'];
 	}
+	
+	public static function itemidIsInDb($itemid)
+	{
+		$itemid=(int)$itemid;
+		$result = DB::select()->from('draws')->where('itemid', '=', $itemid)->execute();
+		return (count($result)>0)?1:0;
+	}
+	public static function caculateDiffByMinutes($start,$end)
+	{
+		$datetime1 = strtotime($start);
+		$datetime2 = strtotime($end);
+		$interval  = abs($datetime2 - $datetime1);
+		$minutes   = round($interval / 60);
+		return $minutes;
+	}
 }

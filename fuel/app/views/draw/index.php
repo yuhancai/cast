@@ -10,6 +10,7 @@
 			<th>Luckynum</th>
 			<th>Begin at</th>
 			<th>Lucky at</th>
+			<th>minutes</th>
 			<th>Open at</th>
 			<th>Itemid</th>
 			<th>&nbsp;</th>
@@ -22,6 +23,7 @@
 			<td><?php echo $item->luckynum; ?></td>
 			<td><?php echo $item->begin_at; ?></td>
 			<td><?php echo $item->lucky_at; ?></td>
+			<td><?php echo Model_Draw::caculateDiffByMinutes($item->begin_at, $item->lucky_at); ?></td>
 			<td><?php echo $item->open_at; ?></td>
 			<td><?php echo $item->itemid; ?></td>
 			<td>
