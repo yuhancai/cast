@@ -60,7 +60,7 @@ class Model_Item extends Model
 	
 	public static function isInDb($fromurl)
 	{
-		$fromurl=(int)$fromurl;
+		$fromurl=(string)$fromurl;
 		$result = DB::select()->from('items')->where('forurl', '=', $fromurl)->execute();	    
 		return (count($result)>0)?1:0;
 	}
@@ -83,7 +83,7 @@ class Model_Item extends Model
 
 	 else
 	 {
-	 	Session::set_flash('error', 'Could not save item.');
+	 	//doing nothing
 	 }
     }
    
@@ -100,10 +100,12 @@ class Model_Item extends Model
     
     public static function getItemidFromForurl($forurl)
     {
-    	$query = DB::select('id')->from('items');    	
+    	$query = DB::select('id')->from('items');  
+    	$query->order_by('id','desc');
+    	$query->limit(1);
     	$query->where('forurl', '=', $forurl);
-    	$result=$query->execute();
-        return $result;
+    	$result=$query->execute()->as_array();
+        return $result[0]['id'];
     }
     
 	

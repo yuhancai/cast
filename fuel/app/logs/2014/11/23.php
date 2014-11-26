@@ -61,3 +61,4 @@ WARNING - 2014-11-23 20:08:41 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2014-11-23 20:10:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 ERROR - 2014-11-23 20:10:39 --> Notice - Undefined offset: 2 in E:\PHP\z\cast\fuel\app\classes\controller\draw.php on line 250
 WARNING - 2014-11-23 20:11:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-11-23 20:25:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

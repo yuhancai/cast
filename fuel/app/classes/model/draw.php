@@ -41,8 +41,10 @@ class Model_Draw extends Model {
 	public static function getMaxQishuByItemid($itemid)
 	{
 		$query = DB::select('qishu')->from('draws');
+		$query->order_by('qishu','desc');
+		$query->limit(1);
 		$query->where('itemid', '=', $itemid);
-		$result=$query->execute();
-		return $result;
+		$result=$query->execute()->as_array();
+		return $result[0]['qishu'];
 	}
 }
