@@ -13,9 +13,11 @@ class Controller_Draw extends Controller_Template{
 						'proxy'=>"proxysv:80"
 				)
 		);
-		$default = stream_context_set_default($default_opts);		
-       // print_r($this->getAllDataFromUrl("http://1.163.com/detail/01-37-00-04-20.html"));		
-		///////////////////
+		$default = stream_context_set_default($default_opts);	
+		//print_r($this->getDataFromUrl("http://1.163.com/detail/00-80-00-00-11.html"));	
+        print_r($this->getAllDataFromUrl("http://1.163.com/detail/00-80-00-01-75.html"));		
+		///////////////////http://1.163.com/detail/00-80-00-01-72.html
+		//http://1.163.com/detail/01-37-00-01-20.html
         
 		$data['draws'] = Model_Draw::find('all',array(
 /* 							    'where' => array(
@@ -170,7 +172,7 @@ class Controller_Draw extends Controller_Template{
    	$content = file_get_contents($url);   	
    	$obj = new Grep();
    	$obj->set($content);   	
-   	$t = $obj->get('shijian', 1);
+   	$t = $obj->get('shijian', 0);
    	$duobaotime=$t[1];
    	$jieshutime=$t[2];
    	$jiexiaotime=$t[0];
